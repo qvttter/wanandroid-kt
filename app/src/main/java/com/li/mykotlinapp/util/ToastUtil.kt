@@ -36,7 +36,7 @@ object ToastUtil {
         mToast!!.show()
     }
 
-    fun shortToast(context: Context, msg: String) {
+    fun shortToast(context: Context, msg: String?) {
         if (mToast == null) {
             mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT)
         } else {

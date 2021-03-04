@@ -18,7 +18,6 @@ import com.li.mykotlinapp.util.ToastUtil
  *************************************************************************/
 abstract class BaseFragment : Fragment() {
     protected lateinit var mContext: Context
-    protected var rootView: View? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +26,12 @@ abstract class BaseFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (rootView==null){
-            rootView = inflater.inflate(getLayout(), null)
-        }
+        return inflater?.inflate(getLayout(), null)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initData()
-        return rootView
     }
 
     abstract fun getLayout(): Int

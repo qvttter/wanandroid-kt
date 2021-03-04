@@ -41,7 +41,7 @@ class GuidePageAdapter : PagerAdapter {
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-//        super.destroyItem(container, position, `object`)
+//        super.destroyItem(include_container, position, `object`)
         container.removeView(`object` as View?)
     }
 

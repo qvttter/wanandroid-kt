@@ -2,6 +2,10 @@ package com.li.mykotlinapp.util;
 
 
 import com.li.mykotlinapp.base.BaseListResponse;
+import com.li.mykotlinapp.base.BaseObjectResponse;
+import com.li.mykotlinapp.base.BasePageResponse;
+import com.li.mykotlinapp.base.BaseResponse;
+import com.li.mykotlinapp.base.PageDataBean;
 
 import java.util.List;
 
@@ -57,6 +61,17 @@ public class RxUtil {
         });
     }
 
+    public static <T> Observable<PageDataBean<T>> getPage(BasePageResponse<T> response) {
+        return Observable.create(emitter -> {
+            if (response.getErrorCode()==0) {
+                emitter.onNext(response.getData());
+                emitter.onComplete();
+            } else {
+                emitter.onError(new Throwable(response.getErrorMsg()));
+            }
+        });
+    }
+
 //    public static <T> Observable<T> getDataAt0(BaseResponse<T> response) {
 //        return Observable.create(emitter -> {
 //            if (response.isSuccess()) {
@@ -73,36 +88,35 @@ public class RxUtil {
 //        });
 //    }
 //
-//    public static <T> Observable<T> getObject(BaseObjectResponse<T> response) {
-//        return Observable.create(emitter -> {
-//            if (response.isSuccess()) {
-//                T data = response.getData();
-//                if (data != null) {
-//                    emitter.onNext(data);
-//                    emitter.onComplete();
-//                } else {
-//                    emitter.onError(new Throwable("暂无数据"));
-//                }
-//            } else {
-//                if (response.getMessage()!=null){
-//                    emitter.onError(new Throwable(response.getMessage()));
-//                }else {
-//                    emitter.onError(new Throwable("未知错误"));
-//                }
-//            }
-//        });
-//    }
+    public static <T> Observable<T> getObject(BaseObjectResponse<T> response) {
+        return Observable.create(emitter -> {
+            if (response.getErrorCode()==0) {
+                T data = response.getData();
+                if (data != null) {
+                    emitter.onNext(data);
+                    emitter.onComplete();
+                } else {
+                    emitter.onError(new Throwable("暂无数据"));
+                }
+            } else {
+                if (response.getErrorMsg()!=null){
+                    emitter.onError(new Throwable(response.getErrorMsg()));
+                }else {
+                    emitter.onError(new Throwable("未知错误"));
+                }
+            }
+        });
+    }
 //
-//    public static <T> Observable<String> getMessage(BaseResponse<T> response) {
-//        return Observable.create(emitter -> {
-//            if (response.isSuccess()) {
-//                emitter.onNext(response.getMessage());
-//                emitter.onComplete();
-//            } else {
-//                emitter.onError(new Throwable(response.getMessage()));
-//            }
-//        });
-//    }
+    public static <T> Observable<String> getMessage(BaseResponse<T> response) {
+        return Observable.create(emitter -> {
+            if (response.getErrorCode()==0) {
+                emitter.onComplete();
+            } else {
+                emitter.onError(new Throwable(response.getErrorMsg()));
+            }
+        });
+    }
 //
 //    public static <T> Observable<String> getSilgleMsg(BaseResponse<T> response) {
 //        return Observable.create(emitter -> {

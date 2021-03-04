@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_object_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:textAllCaps="false"
+            android:text="objectBox" />
+
+        <Button
+            android:id="@+id/btn_hellosmartcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="hellosmartcard" />
+        <Button
+            android:id="@+id/btn_OmapiActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:text="OmapiActivity" />
+
+        <Button
+            android:id="@+id/btn_mqtt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="mqtt" />
+
+        <Button
+            android:id="@+id/btn_excel"
+            android:layout_width="wrap_content"
+            android:layout_columnSpan="1"
+            android:layout_height="wrap_content"
+            android:text="excel" />
+
+        <Button
+            android:id="@+id/btn_zxing"
+            android:layout_columnSpan="1"
+            android:text="zxing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </GridLayout>
+
+
+</LinearLayout>
