@@ -5,12 +5,19 @@ import android.content.Intent
 import android.text.TextUtils
 import com.apkfuns.logutils.LogUtils
 import com.gengqiquan.result.startActivityWithResult
-import com.google.zxing.client.android.CaptureActivity
+import com.huawei.hms.hmsscankit.ScanUtil
+import com.huawei.hms.ml.scan.HmsScan
+import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.test.MQTTActivity
 import com.li.mykotlinapp.test.hellosmartcardActivity
+import com.li.mykotlinapp.widget.TestDialog
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.android.synthetic.main.fragment_omapi_test.*
+import java.util.concurrent.TimeUnit
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -30,9 +37,45 @@ class TestKtActivity : BaseActivity() {
         initEvent()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != RESULT_OK || data == null) {
+            return
+        }
+        when (requestCode) {
+            REQUEST_CODE_SCAN_DEFAULT_MODE -> {
+                val hmsScan: HmsScan? = data.getParcelableExtra(ScanUtil.RESULT) // 获取扫码结果 ScanUtil.RESULT
+                if (!TextUtils.isEmpty(hmsScan?.getOriginalValue())) {
+                    var result = hmsScan?.getOriginalValue()
+                    tv_text.text = result
+
+                    result!!.toByteArray()
+                }
+            }
+        }
+    }
+
     private fun initEvent() {
         tv_text.setOnClickListener {
             tv_text.text = ""
+        }
+        btn_scan_kit.setOnClickListener {
+            val options =
+                HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE).create()
+            ScanUtil.startScan(
+                this, REQUEST_CODE_SCAN_DEFAULT_MODE,
+                options
+            )
+        }
+
+        btn_dialog.setOnClickListener {
+            Observable.timer(5, TimeUnit.SECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { t ->
+                    var dialog = TestDialog(mContext)
+                    dialog.show()
+                }
         }
 
         btn_object_box.setOnClickListener {
@@ -69,6 +112,8 @@ class TestKtActivity : BaseActivity() {
     }
 
     companion object {
+        const val REQUEST_CODE_SCAN_DEFAULT_MODE = 1
+
         fun start(content: Context) {
             val intent = Intent(content, TestKtActivity().javaClass)
             content.startActivity(intent)

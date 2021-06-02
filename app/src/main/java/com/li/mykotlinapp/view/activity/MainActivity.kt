@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.test.hellosmartcardActivity
+import com.li.mykotlinapp.util.FloatTool
 import com.li.mykotlinapp.view.fragment.IndexFragment
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,7 +39,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun initData() {
         getPermission()
+        FloatTool.RequestOverlayPermission(this)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        FloatTool.onActivityResult(requestCode, resultCode, data, this)
+    }
+
+
 
     private fun getPermission() {
         RxPermissions(this)

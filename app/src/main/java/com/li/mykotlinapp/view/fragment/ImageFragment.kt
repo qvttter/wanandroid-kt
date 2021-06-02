@@ -19,7 +19,7 @@ class ImageFragment : BaseFragment() {
     val IMG_URL = "img_url"
 
 
-    lateinit var imgUrl:String
+    private var imgUrl:String?=null
 
     override fun getLayout(): Int {
         return R.layout.fragment_image

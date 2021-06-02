@@ -72,7 +72,7 @@
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".view.activity.TestKtActivity"
-            android:screenOrientation="fullSensor"></activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".view.activity.ObjectActivity" />
         <activity android:name=".test.hellosmartcardActivity" />
         <activity android:name=".view.activity.OmapiActivity" />

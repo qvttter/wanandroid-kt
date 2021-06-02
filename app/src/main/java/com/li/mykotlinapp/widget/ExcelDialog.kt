@@ -47,7 +47,7 @@ class ExcelDialog :BaseDialog() {
     }
 
     override fun onResume() {
-        dialog!!.window.setLayout(DensityUtil.dip2px(activity,500f), DensityUtil.dip2px(activity,300f))
+        dialog!!.window!!.setLayout(DensityUtil.dip2px(activity,500f), DensityUtil.dip2px(activity,300f))
         super.onResume()
     }
 
