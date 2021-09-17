@@ -10,13 +10,10 @@ import com.huawei.hms.ml.scan.HmsScan
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
-import com.li.mykotlinapp.test.MQTTActivity
-import com.li.mykotlinapp.test.hellosmartcardActivity
 import com.li.mykotlinapp.widget.TestDialog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
-import kotlinx.android.synthetic.main.fragment_omapi_test.*
 import java.util.concurrent.TimeUnit
 
 /************************************************************************
@@ -82,14 +79,11 @@ class TestKtActivity : BaseActivity() {
             ObjectActivity.start(mContext)
         }
         btn_hellosmartcard.setOnClickListener {
-            hellosmartcardActivity.start(mContext)
         }
 
         btn_OmapiActivity.setOnClickListener {
-            OmapiActivity.start(mContext)
         }
         btn_mqtt.setOnClickListener {
-            MQTTActivity.start(mContext)
         }
         btn_excel.setOnClickListener {
             ExcelActivity.start(mContext)

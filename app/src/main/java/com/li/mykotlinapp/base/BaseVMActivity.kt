@@ -5,7 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.afollestad.materialdialogs.MaterialDialog
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.util.CommonUtils
@@ -48,7 +48,7 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
     }
 
     private fun initVM() {
-        mViewModel = ViewModelProviders.of(this).get(CommonUtils.getClass(this))
+        mViewModel = ViewModelProvider(this)[CommonUtils.getClass(this)]
 
 //        providerVMClass()?.let {
 //            mViewModel = ViewModelProviders.of(this).get(it)

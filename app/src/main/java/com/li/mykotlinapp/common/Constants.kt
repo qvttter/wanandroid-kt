@@ -18,7 +18,6 @@ class Constants {
         const val PASSWORD = "password"
         const val FLAG_LOGIN = "flag_login"
         //LiveEventBus消息总线通知
-        const val MQTT_MSG = "mqtt_msg"
 
     }
 

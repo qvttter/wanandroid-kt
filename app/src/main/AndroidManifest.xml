@@ -26,7 +26,6 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
 
     <application
         android:name=".common.App"
@@ -38,16 +37,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory"
         tools:targetApi="28">
-        <service
-            android:name=".service.MQTTService"
-            android:enabled="true"
-            android:exported="true"></service>
-        <!-- Mqtt服务 -->
-        <service android:name="org.eclipse.paho.android.service.MqttService" />
-
-        <uses-library
-            android:name="org.simalliance.openmobileapi"
-            android:required="false" />
 
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
@@ -74,9 +63,6 @@
             android:name=".view.activity.TestKtActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".view.activity.ObjectActivity" />
-        <activity android:name=".test.hellosmartcardActivity" />
-        <activity android:name=".view.activity.OmapiActivity" />
-        <activity android:name=".test.MQTTActivity" />
         <activity android:name=".test.TestViewActivity"></activity>
         <activity android:name=".view.activity.ExcelActivity" />
         <activity android:name=".view.activity.ScanActivity" />

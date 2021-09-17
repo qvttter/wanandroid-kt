@@ -19,7 +19,7 @@ import retrofit2.http.*
  *************************************************************************/
 interface Service {
     @GET("banner/json")
-    fun getMainBanner(): Observable<BaseListResponse<BannerBean>>
+    suspend fun getMainBanner(): BaseListResponse<BannerBean>
 
     @GET("article/list/{page}/json")
     fun getMainArticleList(@Path("page") page: Int): Observable<BasePageResponse<ArticleBean>>

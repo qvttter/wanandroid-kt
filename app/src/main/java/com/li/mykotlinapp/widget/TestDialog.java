@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.li.mykotlinapp.R;
 
+import static android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
 import static android.view.WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
 

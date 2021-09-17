@@ -1,5 +1,7 @@
 package com.li.mykotlinapp.bean
 
+import com.stx.xhb.androidx.entity.BaseBannerInfo
+
 /************************************************************************
  *@Project: MyKotlinApp
  *@Package_Name: com.li.mykotlinapp.bean
@@ -18,8 +20,16 @@ data class BannerBean(
         val title: String,
         val type: Int,
         val url: String
-){
+): BaseBannerInfo {
     override fun toString(): String {
         return imagePath
+    }
+
+    override fun getXBannerUrl(): Any {
+        return imagePath
+    }
+
+    override fun getXBannerTitle(): String {
+        return title
     }
 }

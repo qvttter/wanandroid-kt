@@ -1,10 +1,13 @@
 package com.li.mykotlinapp.view.vm
 
-import androidx.lifecycle.MutableLiveData
-import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.apkfuns.logutils.LogUtils
 import com.easyway.ipu.base.BaseViewModel
+import com.li.mykotlinapp.base.BaseResult
+import com.li.mykotlinapp.base.doFailure
+import com.li.mykotlinapp.base.doSuccess
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.biz.CommonBiz
+import kotlinx.coroutines.flow.*
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -15,25 +18,8 @@ import com.li.mykotlinapp.biz.CommonBiz
  *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class IndexFragmentVM : BaseViewModel() {
-    val bannerList = MutableLiveData<MutableList<BannerBean>>()
-
-    //    //获取banner
-//        fun getMainBanner(){
-//        CommonBiz.getInstance().getMainBanner()
-//                .subscribe({ t: List<BannerBean> ->
-//                    bannerList.clear()
-//                    bannerImgList.clear()
-//                    for (bannerBean in t) {
-//                        bannerImgList.add(bannerBean.imagePath)
-//                    }
-//                    bannerList.addAll(t)
-//                    banner.setImages(bannerImgList)
-//                    banner.start()
-//                }, { t: Throwable? ->
-//                    shortToast(getString(R.string.str_common_error) + t!!.message)
-//                })
-
-//        //获取文章
+    val bannerValue = MutableStateFlow<List<BannerBean>>(listOf())
+    //        //获取文章
 //        CommonBiz.getInstance().getMainArticleList(page)
 //                .subscribe({ t: PageDataBean<ArticleBean>? ->
 //                    articleList.clear()
@@ -46,11 +32,46 @@ class IndexFragmentVM : BaseViewModel() {
 //                })
 
     fun getMainBanner() {
+        launch {
+            CommonBiz.getInstance().getMainBanner()
+                .onStart {
+                    isLoading.value = true
+                }
+                .catch {
+                    LogUtils.e(it.message)
+                }
+                .onCompletion {
+                    isLoading.value = false
+                }
+                .collect { result ->
+                    result.doFailure { throwable ->
+                        message.value = "获取banner出错"
+                    }
+                    result.doSuccess { value ->
+                        bannerValue.value = value
+                    }
+                }
+        }
+
+
 //        launch {
 //            val banners = runIO {
 //                CommonBiz.getInstance().getMainBanner()
 //            }
 //            bannerList.value = banners
+//
+//            val banners = flow<String> {
+//                runIO {
+//                    val data = CommonBiz.getInstance().getMainBanner()
+//
+//                    if (data is BaseResult.Success) {
+//                        bannerValue.value = data.data
+//                    } else {
+//                        message.value = "获取banner出错"
+//                    }
+//
+//                }
+//            }
 //        }
     }
 

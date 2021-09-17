@@ -7,10 +7,10 @@ import java.util.*
  * Date:    Sep 08, 2017
  */
 
-class BaseResponse<T>(
+data class BaseResponse<out T>(
         val errorCode: Int,
         val errorMsg: String,
-        var data: String) {
+        val data: T) {
 
 
 }

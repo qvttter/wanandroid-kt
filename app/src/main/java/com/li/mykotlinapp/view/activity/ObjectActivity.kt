@@ -58,13 +58,13 @@ class ObjectActivity : BaseVMActivity<ObjectVM>() {
         }
 
         mViewModel.apply {
-            isLoading.observe(this@ObjectActivity, Observer {
-                if (it) showLoading("") else hideLoading()
-            })
+//            isLoading.observe(this@ObjectActivity, Observer {
+//                if (it) showLoading("") else hideLoading()
+//            })
 
-            message.observe(this@ObjectActivity, Observer {
-                if (it.isNotEmpty()) shortToast(it)
-            })
+//            message.observe(this@ObjectActivity, Observer {
+//                if (it.isNotEmpty()) shortToast(it)
+//            })
 
             users.observe(this@ObjectActivity, Observer {
                 list.clear()

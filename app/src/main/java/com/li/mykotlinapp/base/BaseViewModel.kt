@@ -4,7 +4,9 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.li.mykotlinapp.bean.BannerBean
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.concurrent.CancellationException
 import kotlin.coroutines.intrinsics.suspendCoroutineUninterceptedOrReturn
 
@@ -17,11 +19,11 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 由v层持有，控制其loading的显示与隐藏
      */
-    val isLoading = MutableLiveData<Boolean>()
+    val isLoading = MutableStateFlow(false)
     /**
      * 由v层持有，显示信息
      */
-    val message = MutableLiveData<String>()
+    val message = MutableStateFlow("")
 
 
     val mException: MutableLiveData<Exception> = MutableLiveData()

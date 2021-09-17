@@ -4,14 +4,17 @@ import android.content.Context
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.li.mykotlinapp.common.App
 import com.li.mykotlinapp.common.Constants
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.coroutineScope
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 /************************************************************************
@@ -29,7 +32,6 @@ open class BaseBiz {
 
     constructor() {
         mContext = App.instance
-
         val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(mContext))
         okHttpClient = OkHttpClient.Builder()
                 .connectTimeout(20000, TimeUnit.MILLISECONDS)
@@ -40,7 +42,7 @@ open class BaseBiz {
         retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
                 .build()
     }
@@ -56,6 +58,32 @@ open class BaseBiz {
                 emitter.onComplete()
             } else {
                 emitter.onError(Throwable(response.errorMsg))
+            }
+        }
+    }
+
+    suspend fun <T : Any> executeResponse(response: BaseResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+                                          errorBlock: (suspend CoroutineScope.() -> Unit)? = null): com.li.mykotlinapp.base.BaseResult<T> {
+        return coroutineScope {
+            if (response.errorCode == -1) {
+                errorBlock?.let { it() }
+                com.li.mykotlinapp.base.BaseResult.Error(IOException(response.errorMsg))
+            } else {
+                successBlock?.let { it() }
+                com.li.mykotlinapp.base.BaseResult.Success(response.data)
+            }
+        }
+    }
+
+    suspend fun <T : Any> executeListResponse(response: BaseListResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+                                              errorBlock: (suspend CoroutineScope.() -> Unit)? = null): com.li.mykotlinapp.base.BaseResult<List<T>> {
+        return coroutineScope {
+            if (response.errorCode == -1) {
+                errorBlock?.let { it() }
+                com.li.mykotlinapp.base.BaseResult.Error(IOException(response.errorMsg))
+            } else {
+                successBlock?.let { it() }
+                com.li.mykotlinapp.base.BaseResult.Success(response.data)
             }
         }
     }

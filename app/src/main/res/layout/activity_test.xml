@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="150dp"/>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -70,6 +70,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </GridLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 
 
 </LinearLayout>
