@@ -32,7 +32,7 @@ class CommonWebViewActivity : BaseActivity() {
 
     override fun initData() {
         var url = intent.getStringExtra(Constants.URL)
-        var title = intent.getStringExtra(Constants.WEB_VIEW_TITLE)
+        var title = intent.getStringExtra(Constants.WEB_VIEW_TITLE) ?:""
         initToolBar(title)
         mWebView = AgentWeb.with(this)
                 .setAgentWebParent(container_framelayout as FrameLayout, LinearLayout.LayoutParams(-1, -1))

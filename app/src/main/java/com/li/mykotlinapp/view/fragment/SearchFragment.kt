@@ -18,11 +18,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_sea
         fun newInstance(): SearchFragment = SearchFragment()
     }
 
-    override fun getBinding(
-        inflater: LayoutInflater,
-        viewGroup: ViewGroup?
-    ): FragmentSearchBinding {
-        return FragmentSearchBinding.inflate(inflater,viewGroup,false)
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSearchBinding
+        get() = FragmentSearchBinding::inflate
+
 
 }

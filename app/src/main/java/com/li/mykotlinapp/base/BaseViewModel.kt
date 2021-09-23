@@ -1,4 +1,4 @@
-package com.easyway.ipu.base
+package com.li.mykotlinapp.base
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData

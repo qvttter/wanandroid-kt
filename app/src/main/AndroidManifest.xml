@@ -38,7 +38,8 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="28">
 
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".view.activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,6 +67,8 @@
         <activity android:name=".test.TestViewActivity"></activity>
         <activity android:name=".view.activity.ExcelActivity" />
         <activity android:name=".view.activity.ScanActivity" />
+        <activity android:name=".test.TestComposeActivity"
+            android:exported="true"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

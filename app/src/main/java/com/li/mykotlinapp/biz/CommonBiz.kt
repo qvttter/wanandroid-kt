@@ -43,15 +43,20 @@ class CommonBiz private constructor() : BaseBiz() {
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getMainArticleList(page: Int): Observable<PageDataBean<ArticleBean>> {
-        return service.getMainArticleList(page)
-            .compose(RxUtil.trans_io_main())
-            .flatMap { t -> RxUtil.getPage(t) }
+    suspend fun login(username: String, password: String): Flow<CommonResult<LoginResponse>> {
+        return flow {
+            var infoModel = service.login(username,password)
+            emit(FlowUtil.getObject(infoModel))
+        }.flowOn(Dispatchers.IO)
     }
 
-    fun login(username: String, password: String): Observable<LoginResponse> {
-        return service.login(username, password)
-            .flatMap { t -> RxUtil.getObject(t) }
+    suspend fun getMyCollectArticleList(page: Int): Flow<CommonResult<PageDataBean<ArticleBean>>> {
+        return flow {
+            var infoModel = service.getMyCollectArticleList(page)
+            emit(FlowUtil.getPage(infoModel))
+        }.flowOn(Dispatchers.IO)
     }
+
+
 
 }

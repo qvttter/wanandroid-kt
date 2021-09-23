@@ -24,12 +24,15 @@ class HomeTabFragment : BaseFragment<FragmentHomeTabBinding>(R.layout.fragment_h
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelected)
     }
 
-    override fun getBinding(
-        inflater: LayoutInflater,
-        viewGroup: ViewGroup?
-    ): FragmentHomeTabBinding {
-        return FragmentHomeTabBinding.inflate(inflater, viewGroup, false)
-    }
+//    override fun getBinding(
+//        inflater: LayoutInflater,
+//        viewGroup: ViewGroup?
+//    ): FragmentHomeTabBinding {
+//        return FragmentHomeTabBinding.inflate(inflater, viewGroup, false)
+//    }
+
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeTabBinding
+        get() = FragmentHomeTabBinding::inflate
 
     private val onNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener {
         when (it.itemId) {
@@ -70,7 +73,6 @@ class HomeTabFragment : BaseFragment<FragmentHomeTabBinding>(R.layout.fragment_h
                 4 -> MyFragment()
                 else -> IndexFragment()
             }
-
             override fun getItemCount() = 5
         }
     }

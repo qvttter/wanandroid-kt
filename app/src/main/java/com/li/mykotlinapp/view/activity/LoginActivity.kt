@@ -34,14 +34,14 @@ class LoginActivity : BaseActivity() {
         btn_login.setOnClickListener {
             val username = et_username.text.toString()
             val password = et_password.text.toString()
-            CommonBiz.getInstance().login(username, password)
-                    .compose(RxUtil.trans_io_main())
-                    .subscribe({ t: LoginResponse? ->
-                        PrefUtil.flagLogin = true
-                        PrefUtil.userName = username
-                        PrefUtil.pwd = password
-                        MainActivity.start(mContext)
-                    }, { t: Throwable? -> shortToast(t!!.message) })
+//            CommonBiz.getInstance().login(username, password)
+//                    .compose(RxUtil.trans_io_main())
+//                    .subscribe({ t: LoginResponse? ->
+//                        PrefUtil.flagLogin = true
+//                        PrefUtil.userName = username
+//                        PrefUtil.pwd = password
+//                        MainActivity.start(mContext)
+//                    }, { t: Throwable? -> shortToast(t!!.message) })
         }
 
         tv_title.setOnClickListener {

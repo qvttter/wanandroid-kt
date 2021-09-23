@@ -3,28 +3,26 @@ package com.li.mykotlinapp.view.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.easyway.ipu.base.BaseVMFragment
 import com.li.mykotlinapp.adapter.IndexArticleAdapter
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.view.vm.IndexFragmentVM
 import com.stx.xhb.androidx.XBanner
 import kotlinx.android.synthetic.main.fragment_index.*
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
 import com.apkfuns.logutils.LogUtils
 
 
 import com.bumptech.glide.Glide
 import com.li.mykotlinapp.R
-import com.li.mykotlinapp.base.BaseFragment
+import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.databinding.FragmentIndexBinding
 import com.stx.xhb.androidx.XBanner.XBannerAdapter
 import com.li.mykotlinapp.view.activity.CommonWebViewActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 /************************************************************************
@@ -35,7 +33,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *@Date: 2018/11/5
  *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
-class IndexFragment : BaseVMFragment<IndexFragmentVM,FragmentIndexBinding>(R.layout.fragment_index) {
+class IndexFragment : BaseVMFragment<IndexFragmentVM, FragmentIndexBinding>(R.layout.fragment_index) {
     private var bannerList: MutableList<BannerBean> = ArrayList()
     private var bannerImgList: MutableList<String> = ArrayList()
 
@@ -50,9 +48,9 @@ class IndexFragment : BaseVMFragment<IndexFragmentVM,FragmentIndexBinding>(R.lay
         fun newInstance(): IndexFragment = IndexFragment()
     }
 
-    override fun initBinding(view: View): FragmentIndexBinding {
-        return FragmentIndexBinding.bind(view)
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIndexBinding
+        get() = FragmentIndexBinding::inflate
+
 
     override fun getLayout(): Int {
         return R.layout.fragment_index
@@ -105,7 +103,7 @@ class IndexFragment : BaseVMFragment<IndexFragmentVM,FragmentIndexBinding>(R.lay
 
     private fun initEvent() {
         banner.setOnItemClickListener { banner, model, view, position ->
-            var bean = model as BannerBean
+            val bean = model as BannerBean
             CommonWebViewActivity.start(mContext, bean.url, bean.title)
         }
 
@@ -113,6 +111,5 @@ class IndexFragment : BaseVMFragment<IndexFragmentVM,FragmentIndexBinding>(R.lay
             getData()
         }
     }
-
 
 }

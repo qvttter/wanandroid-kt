@@ -3,6 +3,7 @@ package com.li.mykotlinapp.biz
 import com.li.mykotlinapp.base.BaseListResponse
 import com.li.mykotlinapp.base.BaseObjectResponse
 import com.li.mykotlinapp.base.BasePageResponse
+import com.li.mykotlinapp.base.BaseResponse
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.LoginResponse
@@ -21,12 +22,18 @@ interface Service {
     @GET("banner/json")
     suspend fun getMainBanner(): BaseListResponse<BannerBean>
 
-    @GET("article/list/{page}/json")
-    fun getMainArticleList(@Path("page") page: Int): Observable<BasePageResponse<ArticleBean>>
+    @GET("lg/article/list/{page}/json")
+    suspend fun getMainArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>
+
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getMyCollectArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>
+
+    @GET("lg/collect/list/{page}/json")
+    fun getCollect(@Path("page") page: Int): BasePageResponse<ArticleBean>
 
     @FormUrlEncoded
     @POST("user/login")
-    fun login(@Field("username") username: String, @Field("password") password: String)
-            : Observable<BaseObjectResponse<LoginResponse>>
+    suspend fun login(@Field("username") username: String, @Field("password") password: String)
+            : BaseResponse<LoginResponse>
 
 }

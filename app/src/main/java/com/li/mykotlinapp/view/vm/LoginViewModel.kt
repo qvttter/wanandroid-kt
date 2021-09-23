@@ -1,6 +1,7 @@
 package com.li.mykotlinapp.view.vm
 
-import com.easyway.ipu.base.BaseViewModel
+import com.li.mykotlinapp.base.BaseViewModel
+
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -10,7 +11,7 @@ import com.easyway.ipu.base.BaseViewModel
  *@Date: 2020/7/9
  *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
-class LoginViewModel :BaseViewModel(){
+class LoginViewModel : BaseViewModel(){
 
     fun test(){
 

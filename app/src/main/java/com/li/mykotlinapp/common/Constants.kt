@@ -17,6 +17,10 @@ class Constants {
         const val USERNAME = "username"
         const val PASSWORD = "password"
         const val FLAG_LOGIN = "flag_login"
+        const val DOMAIN = "domain"
+        const val SHARED_NAME ="_preferences"
+        /** 数据缓存 - Key - Cookie 信息 */
+        const val DATA_CACHE_KEY_COOKIES = "data_cache_key_cookies"
         //LiveEventBus消息总线通知
 
     }

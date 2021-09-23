@@ -10,6 +10,7 @@ import com.huawei.hms.ml.scan.HmsScan
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
+import com.li.mykotlinapp.test.TestComposeActivity
 import com.li.mykotlinapp.widget.TestDialog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -64,6 +65,8 @@ class TestKtActivity : BaseActivity() {
                 options
             )
         }
+
+        btn_compose.setOnClickListener { TestComposeActivity.start(mContext) }
 
         btn_dialog.setOnClickListener {
             Observable.timer(5, TimeUnit.SECONDS)

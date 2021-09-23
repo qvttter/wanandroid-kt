@@ -33,6 +33,15 @@ object PrefUtil {
         set(pwd) = setString(mContext, Constants.PASSWORD, pwd!!)
 
     /**
+     * domain
+     *
+     * @param domain
+     */
+    var domain: String
+        get() = getString(mContext, Constants.DOMAIN, "")!!
+        set(domain) = setString(mContext, Constants.DOMAIN, domain)
+
+    /**
      * 登录状态
      * */
     var flagLogin: Boolean

@@ -1,4 +1,4 @@
-package com.easyway.ipu.base
+package com.li.mykotlinapp.base
 
 import android.content.Context
 import android.graphics.Color
@@ -8,22 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.afollestad.materialdialogs.MaterialDialog
-import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.util.CommonUtils
 import com.li.mykotlinapp.util.ToastUtil
 import com.zyao89.view.zloading.ZLoadingDialog
 import com.zyao89.view.zloading.Z_TYPE
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /************************************************************************
@@ -40,8 +32,12 @@ abstract class BaseVMFragment<VM : BaseViewModel, T : ViewBinding>(@LayoutRes va
     private var mProgressDialog: MaterialDialog? = null
     private var loadingDialog: ZLoadingDialog? = null
     protected lateinit var mViewModel: VM
-    private lateinit var _binding: T
-    protected val binding get() = _binding
+    private var _binding: ViewBinding? = null
+    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding: T
+        get() = _binding as T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,17 +49,15 @@ abstract class BaseVMFragment<VM : BaseViewModel, T : ViewBinding>(@LayoutRes va
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layoutId, null)
+        _binding = bindingInflater.invoke(inflater, container, false)
+        return requireNotNull(_binding).root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = initBinding(view)
         initVM()
         initData()
     }
-
-    abstract fun initBinding(view: View): T
 
     abstract fun getLayout(): Int
     abstract fun initData()
@@ -74,6 +68,7 @@ abstract class BaseVMFragment<VM : BaseViewModel, T : ViewBinding>(@LayoutRes va
 
     override fun onDestroy() {
         lifecycle.removeObserver(mViewModel)
+        _binding = null
         super.onDestroy()
     }
 

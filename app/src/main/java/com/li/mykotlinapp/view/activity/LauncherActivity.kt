@@ -18,12 +18,12 @@ class LauncherActivity : BaseActivity() {
 
     override fun initData() {
         if (PrefUtil.flagLogin) {
-            CommonBiz.getInstance().login(PrefUtil.userName!!, PrefUtil.pwd!!)
-                    .compose(RxUtil.trans_io_main())
-                    .subscribe({ t: LoginResponse? ->
-                        MainActivity.start(mContext)
-                        finish()
-                    }, { t: Throwable? -> shortToast(t!!.message) })
+//            CommonBiz.getInstance().login(PrefUtil.userName!!, PrefUtil.pwd!!)
+//                    .compose(RxUtil.trans_io_main())
+//                    .subscribe({ t: LoginResponse? ->
+//                        MainActivity.start(mContext)
+//                        finish()
+//                    }, { t: Throwable? -> shortToast(t!!.message) })
         } else {
             LoginActivity.start(mContext)
             finish()

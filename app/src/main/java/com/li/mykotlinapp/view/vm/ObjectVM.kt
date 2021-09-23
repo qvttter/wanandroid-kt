@@ -2,7 +2,7 @@ package com.li.mykotlinapp.view.vm
 
 import androidx.lifecycle.MutableLiveData
 import com.apkfuns.logutils.LogUtils
-import com.easyway.ipu.base.BaseViewModel
+import com.li.mykotlinapp.base.BaseViewModel
 import com.li.mykotlinapp.bean.db.UserDbBean
 import com.li.mykotlinapp.biz.db.DbBiz
 

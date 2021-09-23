@@ -18,10 +18,7 @@ class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_p
         fun newInstance(): ProjectFragment = ProjectFragment()
     }
 
-    override fun getBinding(
-        inflater: LayoutInflater,
-        viewGroup: ViewGroup?
-    ): FragmentProjectBinding {
-        return FragmentProjectBinding.inflate(inflater,viewGroup,false)
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentProjectBinding
+        get() = FragmentProjectBinding::inflate
+
 }

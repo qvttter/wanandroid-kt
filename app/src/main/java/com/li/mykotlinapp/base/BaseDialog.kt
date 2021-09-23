@@ -24,7 +24,7 @@ abstract class BaseDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mContext = activity!!
+        mContext = requireActivity()
         return inflater.inflate(getLayout(), container, false)
     }
 

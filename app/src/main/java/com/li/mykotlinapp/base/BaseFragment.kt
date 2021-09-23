@@ -20,8 +20,14 @@ import com.li.mykotlinapp.util.ToastUtil
  *************************************************************************/
 abstract class BaseFragment<T : ViewBinding>(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
     protected lateinit var mContext: Context
-    private lateinit var _binding: T
-    protected val binding get() = _binding
+//    private  var _binding: T?=null
+//    protected val binding get() = _binding
+    private var _binding: ViewBinding? = null
+    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding: T
+        get() = _binding as T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,14 +44,15 @@ abstract class BaseFragment<T : ViewBinding>(@LayoutRes val layoutId: Int) : Fra
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = getBinding(inflater, container)
-        return _binding.root
+        _binding = bindingInflater.invoke(inflater, container, false)
+        return requireNotNull(_binding).root
     }
 
-    protected abstract fun getBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): T
+//    protected abstract fun getBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): T
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
     }
 
     abstract fun getLayout(): Int

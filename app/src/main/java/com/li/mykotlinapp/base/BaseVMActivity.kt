@@ -1,11 +1,12 @@
-package com.easyway.ipu.base
+package com.li.mykotlinapp.base
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import com.afollestad.materialdialogs.MaterialDialog
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.util.CommonUtils
@@ -22,22 +23,30 @@ import kotlinx.android.synthetic.main.include_toolbar.*
  *@Date: 2020-01-06
  *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
-abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseVMActivity<VM : BaseViewModel,T : ViewBinding> : AppCompatActivity() {
     protected lateinit var mContext: Context
     protected lateinit var mViewModel: VM
     protected var mProgressDialog: MaterialDialog? = null
     protected var loadingDialog: ZLoadingDialog? = null
 
+    private var _binding: ViewBinding? = null
+    abstract val bindingInflater: (LayoutInflater) -> T
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding: T
+        get() = _binding as T
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
-        setContentView(getLayout())
+        _binding = bindingInflater.invoke(layoutInflater)
+        setContentView(requireNotNull(_binding).root)
         initVM()
         initData()
     }
 
-    protected abstract fun getLayout(): Int
+//    protected abstract fun getLayout(): Int
     protected abstract fun initData()
 
     override fun onDestroy() {
@@ -45,6 +54,7 @@ abstract class BaseVMActivity<VM : BaseViewModel> : AppCompatActivity() {
             lifecycle.removeObserver(it)
         }
         super.onDestroy()
+        _binding = null
     }
 
     private fun initVM() {

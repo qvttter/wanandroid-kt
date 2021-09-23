@@ -1,8 +1,8 @@
 package com.li.mykotlinapp.view.vm
 
+import androidx.lifecycle.viewModelScope
 import com.apkfuns.logutils.LogUtils
-import com.easyway.ipu.base.BaseViewModel
-import com.li.mykotlinapp.base.BaseResult
+import com.li.mykotlinapp.base.BaseViewModel
 import com.li.mykotlinapp.base.doFailure
 import com.li.mykotlinapp.base.doSuccess
 import com.li.mykotlinapp.bean.BannerBean
@@ -32,6 +32,7 @@ class IndexFragmentVM : BaseViewModel() {
 //                })
 
     fun getMainBanner() {
+        viewModelScope
         launch {
             CommonBiz.getInstance().getMainBanner()
                 .onStart {
@@ -52,7 +53,6 @@ class IndexFragmentVM : BaseViewModel() {
                     }
                 }
         }
-
 
 //        launch {
 //            val banners = runIO {
