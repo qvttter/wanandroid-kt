@@ -43,7 +43,7 @@ class MyViewModel:BaseViewModel() {
                 }
         }
     }
-
+    //收藏的文章
     fun getCollect(){
         launch {
             CommonBiz.getInstance().getMyCollectArticleList(0)

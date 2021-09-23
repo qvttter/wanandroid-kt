@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_bg"
     android:layout_height="match_parent">
 
     <TextView
-        android:text="my"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/tv_name"
+        android:text="登录"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-    <Button
-        android:id="@+id/btn_test"
-        android:text="test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <View
+        android:background="@color/light_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="12dp"
+        android:id="@+id/tv_my_collect_article"
+        style="@style/my_item"
+        android:text="收藏文章" />
+    <View
+        android:background="@color/light_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_my_share_article"
+        style="@style/my_item"
+        android:text="分享文章" />
+    <View
+        android:background="@color/light_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_my_collect_website"
+        style="@style/my_item"
+        android:text="收藏网站" />
+    <View
+        android:background="@color/light_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_my_share_project"
+        style="@style/my_item"
+        android:text="分享项目" />
 
-    <Button
-        android:id="@+id/btn_collect"
-        android:text="collect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_logout"
+            android:text="退出登录"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="18sp"
+            android:background="@drawable/shape_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
 </LinearLayout>

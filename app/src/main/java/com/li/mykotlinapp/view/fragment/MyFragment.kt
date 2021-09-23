@@ -10,7 +10,9 @@ import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.databinding.FragmentMyBinding
 import com.li.mykotlinapp.test.TestComposeActivity
+import com.li.mykotlinapp.util.PrefUtil
 import com.li.mykotlinapp.view.activity.TestKtActivity
+import com.li.mykotlinapp.view.dialog.LoginDialog
 import com.li.mykotlinapp.view.vm.MyViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -27,16 +29,22 @@ class MyFragment : BaseVMFragment<MyViewModel,FragmentMyBinding>(R.layout.fragme
             }
         }
 
-        binding.btnTest.setOnClickListener {
-            mViewModel.login("qvttter","li940228")
+        binding.tvName.setOnClickListener {
+            var loginDialog = LoginDialog.newInstance()
+            loginDialog.show(parentFragmentManager,"LoginDialog" )
         }
 
-        binding.btnTest.setOnLongClickListener {
+        if (PrefUtil.flagLogin){
+            binding.tvName.text = PrefUtil.userName
+            binding.tvName.isClickable = false
+        }else{
+            binding.tvName.text = "登录"
+            binding.tvName.isClickable = true
+        }
+
+        binding.btnLogout.setOnLongClickListener {
             TestKtActivity.start(mContext)
             true
-        }
-        binding.btnCollect.setOnClickListener {
-            mViewModel.getCollect()
         }
     }
 

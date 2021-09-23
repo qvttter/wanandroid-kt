@@ -15,5 +15,8 @@
     <color name="mask_color">#f5f5f5</color>
     <color name="viewBackground">@color/color_white</color>
     <color name="col_golden">#c37e00</color>
+    <color name="color_red">#F08080</color>
+    <color name="color_bg">#EDEDED</color>
+
 
 </resources>
