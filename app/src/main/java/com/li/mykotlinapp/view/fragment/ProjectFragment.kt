@@ -7,10 +7,6 @@ import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.databinding.FragmentProjectBinding
 
 class ProjectFragment : BaseFragment<FragmentProjectBinding>(R.layout.fragment_project) {
-    override fun getLayout(): Int {
-        return R.layout.fragment_project
-    }
-
     override fun initData() {
     }
 

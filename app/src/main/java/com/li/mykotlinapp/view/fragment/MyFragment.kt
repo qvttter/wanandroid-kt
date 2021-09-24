@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.input.input
 import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseFragment
@@ -17,34 +19,71 @@ import com.li.mykotlinapp.view.vm.MyViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class MyFragment : BaseVMFragment<MyViewModel,FragmentMyBinding>(R.layout.fragment_my) {
+class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragment_my) {
     override fun getLayout(): Int {
         return R.layout.fragment_my
     }
 
     override fun initData() {
         lifecycleScope.launch {
-            mViewModel.loginValue.collect {
-                LogUtils.e("收到login" + it)
+            mViewModel.logoutValue.collect {
+                if (it) isLogin()
             }
         }
 
-        binding.tvName.setOnClickListener {
-            var loginDialog = LoginDialog.newInstance()
-            loginDialog.show(parentFragmentManager,"LoginDialog" )
+        lifecycleScope.launch {
+            mViewModel.isLoading.collect {
+                if (it) {
+                    showLoading("")
+                } else {
+                    hideLoading()
+                }
+            }
         }
 
-        if (PrefUtil.flagLogin){
-            binding.tvName.text = PrefUtil.userName
-            binding.tvName.isClickable = false
-        }else{
-            binding.tvName.text = "登录"
-            binding.tvName.isClickable = true
-        }
+        isLogin()
 
         binding.btnLogout.setOnLongClickListener {
             TestKtActivity.start(mContext)
             true
+        }
+
+        binding.tvName.setOnClickListener {
+            val loginDialog = LoginDialog.newInstance()
+            loginDialog.setListener(object : LoginDialog.OnLoginListener {
+                override fun onLogin() {
+                    binding.tvName.text = PrefUtil.userName
+                    binding.tvName.isClickable = false
+                }
+            })
+            loginDialog.show(parentFragmentManager, "LoginDialog")
+        }
+
+        binding.btnLogout.setOnClickListener {
+            if(PrefUtil.flagLogin){
+                MaterialDialog(mContext).show {
+                    message (text= "确定退出登录？")
+                    positiveButton(R.string.str_confirm){
+                        mViewModel.logout()
+                    }
+                    negativeButton(text = "取消")
+                }
+            }else{
+                MaterialDialog(mContext).show {
+                    message (text= "请先登录")
+                    positiveButton(R.string.str_confirm)
+                }
+            }
+        }
+    }
+
+    private fun isLogin() {
+        if (PrefUtil.flagLogin) {
+            binding.tvName.text = PrefUtil.userName
+            binding.tvName.isClickable = false
+        } else {
+            binding.tvName.text = "登录"
+            binding.tvName.isClickable = true
         }
     }
 

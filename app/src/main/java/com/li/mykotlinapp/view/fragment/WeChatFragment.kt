@@ -7,10 +7,6 @@ import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.databinding.FragmentWeChatBinding
 
 class WeChatFragment : BaseFragment<FragmentWeChatBinding>(R.layout.fragment_we_chat) {
-    override fun getLayout(): Int {
-        return R.layout.fragment_we_chat
-    }
-
     override fun initData() {
     }
 

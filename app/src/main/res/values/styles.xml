@@ -33,5 +33,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@color/color_white</item>
     </style>
-
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

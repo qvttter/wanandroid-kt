@@ -36,4 +36,7 @@ interface Service {
     suspend fun login(@Field("username") username: String, @Field("password") password: String)
             : BaseResponse<LoginResponse>
 
+    @GET("user/logout/json")
+    suspend fun logout(): BaseResponse<Any>
+
 }

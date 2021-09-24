@@ -15,10 +15,6 @@ import kotlinx.android.synthetic.main.fragment_home_tab.*
  */
 class HomeTabFragment : BaseFragment<FragmentHomeTabBinding>(R.layout.fragment_home_tab) {
 
-    override fun getLayout(): Int {
-        return R.layout.fragment_home_tab
-    }
-
     override fun initData() {
         initViewPager()
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelected)
@@ -66,12 +62,12 @@ class HomeTabFragment : BaseFragment<FragmentHomeTabBinding>(R.layout.fragment_h
         mainViewpager.offscreenPageLimit = 2
         mainViewpager.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment = when (position) {
-                0 -> IndexFragment()
+                0 -> HomeFragment()
                 1 -> WeChatFragment()
                 2 -> SearchFragment()
                 3 -> ProjectFragment()
                 4 -> MyFragment()
-                else -> IndexFragment()
+                else -> HomeFragment()
             }
             override fun getItemCount() = 5
         }

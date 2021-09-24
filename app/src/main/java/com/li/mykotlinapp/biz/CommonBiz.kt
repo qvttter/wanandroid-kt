@@ -50,6 +50,13 @@ class CommonBiz private constructor() : BaseBiz() {
         }.flowOn(Dispatchers.IO)
     }
 
+    suspend fun logout(): Flow<CommonResult<Any>> {
+        return flow {
+            var infoModel = service.logout()
+            emit(FlowUtil.getObject(infoModel))
+        }.flowOn(Dispatchers.IO)
+    }
+
     suspend fun getMyCollectArticleList(page: Int): Flow<CommonResult<PageDataBean<ArticleBean>>> {
         return flow {
             var infoModel = service.getMyCollectArticleList(page)

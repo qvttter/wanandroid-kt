@@ -7,9 +7,6 @@ import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.databinding.FragmentSearchBinding
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
-    override fun getLayout(): Int {
-        return R.layout.fragment_search
-    }
 
     override fun initData() {
     }

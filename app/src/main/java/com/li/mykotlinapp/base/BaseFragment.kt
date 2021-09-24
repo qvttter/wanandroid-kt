@@ -55,7 +55,6 @@ abstract class BaseFragment<T : ViewBinding>(@LayoutRes val layoutId: Int) : Fra
         _binding = null
     }
 
-    abstract fun getLayout(): Int
     abstract fun initData()
 
     fun shortToast(msg: String) {
