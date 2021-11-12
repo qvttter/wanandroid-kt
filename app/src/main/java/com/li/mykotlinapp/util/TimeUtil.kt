@@ -1,11 +1,7 @@
 package com.li.mykotlinapp.util
 
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.ZoneOffset
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -16,4 +12,8 @@ import java.time.format.DateTimeFormatter
  *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 object TimeUtil {
+
+    fun timeMillisToTime(time:Long):String{
+        return SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(time)
+    }
 }

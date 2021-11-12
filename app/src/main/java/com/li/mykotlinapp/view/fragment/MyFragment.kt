@@ -77,6 +77,10 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
         }
     }
 
+    private fun logout(){
+
+    }
+
     private fun isLogin() {
         if (PrefUtil.flagLogin) {
             binding.tvName.text = PrefUtil.userName

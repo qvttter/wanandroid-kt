@@ -62,12 +62,12 @@ class HomeTabFragment : BaseFragment<FragmentHomeTabBinding>(R.layout.fragment_h
         mainViewpager.offscreenPageLimit = 2
         mainViewpager.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment = when (position) {
-                0 -> HomeFragment()
+                0 -> IndexFragment()
                 1 -> WeChatFragment()
                 2 -> SearchFragment()
                 3 -> ProjectFragment()
                 4 -> MyFragment()
-                else -> HomeFragment()
+                else -> IndexFragment()
             }
             override fun getItemCount() = 5
         }

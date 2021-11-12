@@ -80,7 +80,7 @@ open class BaseBiz {
                 && !response.headers(SET_COOKIE_KEY).isEmpty()) {
                 val cookies = response.headers(SET_COOKIE_KEY)
                 val cookie = CommonUtils.encodeCookie(cookies)
-                CommonUtils.saveCookie(requestUrl, domain, cookie)
+                CommonUtils.Companion.saveCookie(requestUrl, domain, cookie)
             }
             return response
         }

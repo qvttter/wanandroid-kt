@@ -64,6 +64,13 @@ class CommonBiz private constructor() : BaseBiz() {
         }.flowOn(Dispatchers.IO)
     }
 
+    suspend fun getMainArticleList(page: Int): Flow<CommonResult<PageDataBean<ArticleBean>>> {
+        return flow {
+            var infoModel = service.getMainArticleList(page)
+            emit(FlowUtil.getPage(infoModel))
+        }.flowOn(Dispatchers.IO)
+    }
+
 
 
 }

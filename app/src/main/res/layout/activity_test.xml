@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,20 +8,21 @@
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="150dp" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="4"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_object_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnSpan="1"
-            android:textAllCaps="false"
-            android:text="objectBox" />
+            android:text="objectBox"
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btn_hellosmartcard"
@@ -28,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_columnSpan="1"
             android:text="hellosmartcard" />
+
         <Button
             android:id="@+id/btn_OmapiActivity"
             android:layout_width="wrap_content"
@@ -45,46 +48,49 @@
         <Button
             android:id="@+id/btn_excel"
             android:layout_width="wrap_content"
-            android:layout_columnSpan="1"
             android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
             android:text="excel" />
 
         <Button
             android:id="@+id/btn_zxing"
-            android:layout_columnSpan="1"
-            android:text="zxing"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="zxing" />
 
         <Button
             android:id="@+id/btn_scan_kit"
-            android:layout_columnSpan="1"
-            android:text="scan_kit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="scan_kit" />
 
         <Button
             android:id="@+id/btn_dialog"
-            android:layout_columnSpan="1"
-            android:text="dialog"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="dialog" />
 
         <Button
             android:id="@+id/btn_compose"
-            android:layout_columnSpan="1"
-            android:text="compose"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="compose" />
+        <Button
+            android:id="@+id/btn_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:text="common" />
     </GridLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

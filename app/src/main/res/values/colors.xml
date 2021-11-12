@@ -17,6 +17,8 @@
     <color name="col_golden">#c37e00</color>
     <color name="color_red">#F08080</color>
     <color name="color_bg">#EDEDED</color>
+    <color name="colorDarkGray">#A9A9A9</color>
 
+    <drawable name="translucent_background">#55000000</drawable>
 
 </resources>

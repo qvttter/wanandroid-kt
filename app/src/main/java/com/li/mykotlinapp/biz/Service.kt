@@ -1,13 +1,11 @@
 package com.li.mykotlinapp.biz
 
 import com.li.mykotlinapp.base.BaseListResponse
-import com.li.mykotlinapp.base.BaseObjectResponse
 import com.li.mykotlinapp.base.BasePageResponse
 import com.li.mykotlinapp.base.BaseResponse
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.LoginResponse
-import io.reactivex.Observable
 import retrofit2.http.*
 
 /************************************************************************
@@ -22,7 +20,7 @@ interface Service {
     @GET("banner/json")
     suspend fun getMainBanner(): BaseListResponse<BannerBean>
 
-    @GET("lg/article/list/{page}/json")
+    @GET("article/list/{page}/json")
     suspend fun getMainArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>
 
     @GET("lg/collect/list/{page}/json")

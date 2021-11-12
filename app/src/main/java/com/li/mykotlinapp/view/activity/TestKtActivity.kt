@@ -10,6 +10,7 @@ import com.huawei.hms.ml.scan.HmsScan
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
+import com.li.mykotlinapp.test.TestCommonViewActivity
 import com.li.mykotlinapp.test.TestComposeActivity
 import com.li.mykotlinapp.widget.TestDialog
 import io.reactivex.Observable
@@ -90,6 +91,9 @@ class TestKtActivity : BaseActivity() {
         }
         btn_excel.setOnClickListener {
             ExcelActivity.start(mContext)
+        }
+        btn_common.setOnClickListener {
+            TestCommonViewActivity.start(mContext)
         }
         btn_zxing.setOnClickListener {
             startActivityWithResult<ScanActivity>()
