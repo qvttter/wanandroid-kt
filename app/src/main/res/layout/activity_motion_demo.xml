@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:showPaths="true"
-    app:layoutDescription="@xml/activity_motion_demo_scene">
+    app:layoutDescription="@xml/activity_motion_demo_scene"
+    app:showPaths="true">
 
     <ImageView
         android:id="@+id/iv_main"
@@ -15,5 +15,36 @@
         android:src="@drawable/bg"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-255dp" />
+
+    <ImageView
+        android:id="@+id/iv_favourite"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_baseline_favorite_24"
+        app:layout_constraintBottom_toTopOf="@+id/iv_chat"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_chat"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_baseline_insert_comment_24"
+        app:layout_constraintBottom_toTopOf="@+id/iv_share"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
