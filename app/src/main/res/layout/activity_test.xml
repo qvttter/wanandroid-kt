@@ -8,89 +8,20 @@
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="100dp" />
 
-    <GridLayout
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_app" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="8dp"
+        android:id="@+id/rcv_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_object_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="objectBox"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/btn_hellosmartcard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="hellosmartcard" />
-
-        <Button
-            android:id="@+id/btn_OmapiActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:text="OmapiActivity" />
-
-        <Button
-            android:id="@+id/btn_mqtt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="mqtt" />
-
-        <Button
-            android:id="@+id/btn_excel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="excel" />
-
-        <Button
-            android:id="@+id/btn_zxing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="zxing" />
-
-        <Button
-            android:id="@+id/btn_scan_kit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="scan_kit" />
-
-        <Button
-            android:id="@+id/btn_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="dialog" />
-
-        <Button
-            android:id="@+id/btn_compose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="compose" />
-        <Button
-            android:id="@+id/btn_common"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="1"
-            android:text="common" />
-    </GridLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

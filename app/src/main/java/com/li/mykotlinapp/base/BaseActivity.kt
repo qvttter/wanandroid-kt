@@ -1,9 +1,14 @@
 package com.li.mykotlinapp.base
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
+import com.li.mykotlinapp.R
 import com.li.mykotlinapp.util.ToastUtil
+import com.zyao89.view.zloading.ZLoadingDialog
+import com.zyao89.view.zloading.Z_TYPE
 import kotlinx.android.synthetic.main.include_toolbar.*
 
 /************************************************************************
@@ -16,6 +21,8 @@ import kotlinx.android.synthetic.main.include_toolbar.*
  *************************************************************************/
 abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mContext: Context
+    protected var mProgressDialog: MaterialDialog? = null
+    protected var loadingDialog: ZLoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,5 +53,34 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun longToast(msg: String) {
         ToastUtil.longToast(mContext, msg)
+    }
+
+    fun showLoading(msg: String) {
+        if (msg.isEmpty()) {
+            showLoading("加载中")
+        } else {
+            loadingDialog = ZLoadingDialog(mContext)
+            loadingDialog!!.setLoadingBuilder(Z_TYPE.CIRCLE)
+                .setLoadingColor(resources.getColor(R.color.colorPrimary))//颜色
+                .setHintText("加载中")
+                .setHintTextSize(16f) // 设置字体大小 dp
+                .setHintTextColor(Color.GRAY)  // 设置字体颜色
+                .setDurationTime(0.5) // 设置动画时间百分比 - 0.5倍
+                .setCanceledOnTouchOutside(false)
+                .setDialogBackgroundColor(Color.parseColor("#CC111111")) // 设置背景色，默认白色
+                .show()
+        }
+    }
+
+    fun hideLoading() {
+        if (mProgressDialog != null) {
+            if (mProgressDialog!!.isShowing) {
+                mProgressDialog!!.dismiss()
+            }
+        }
+
+        if (loadingDialog != null) {
+            loadingDialog!!.dismiss()
+        }
     }
 }

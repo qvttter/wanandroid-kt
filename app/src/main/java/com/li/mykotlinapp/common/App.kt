@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.li.mykotlinapp.biz.db.ObjectBox
+import com.li.mykotlinapp.util.CrashHandler
+import com.tencent.bugly.Bugly
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -19,7 +21,10 @@ class App : Application() {
     }
     override fun onCreate() {
         super.onCreate()
+//        CrashHandler.getInstance().init(this)
         ObjectBox.init(this)
+
+        Bugly.init(applicationContext, "d0cd42083f", true);
 
     }
 

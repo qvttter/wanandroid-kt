@@ -8,6 +8,7 @@ import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.widget.CusScanView
 import kotlinx.android.synthetic.main.activity_scan.*
+import kotlinx.android.synthetic.main.include_toolbar.*
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -23,6 +24,9 @@ class ScanActivity : BaseActivity() {
     }
 
     override fun initData() {
+        tool_bar.title="scan"
+        tool_bar.setNavigationOnClickListener { finish() }
+
         zxingview.synchLifeStart(this)
         zxingview.setResultListener(object : CusScanView.OnResultListener {
             override fun onResult(content: Result) {
@@ -31,7 +35,7 @@ class ScanActivity : BaseActivity() {
                 bundle.putString("result", content.text)
                 resultIntent.putExtras(bundle)
                 setResult(RESULT_OK, resultIntent)
-                finish();
+                finish()
             }
         })
     }

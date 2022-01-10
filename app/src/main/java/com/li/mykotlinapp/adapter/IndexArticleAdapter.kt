@@ -7,7 +7,6 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.util.TimeUtil
-import com.li.mykotlinapp.util.TimeUtils
 
 /************************************************************************
  *@Project: MyKotlinApp
