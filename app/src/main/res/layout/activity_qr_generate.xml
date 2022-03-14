@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="快捷输入时间"
+        android:id="@+id/btn_fast_input_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/et_yyyymmddHHMMSSmmm"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/shape_black_stroke"
+        android:hint="yyyymmddHHMMSSmmm"
+        android:maxEms="101"
+        android:padding="4dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_fare_code"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/shape_black_stroke"
+        android:hint="FareCode"
+        android:inputType="number"
+        android:maxEms="101"
+        android:padding="4dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_traveler_num"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/shape_black_stroke"
+        android:hint="旅客数量"
+        android:inputType="number"
+        android:maxEms="101"
+        android:padding="4dp"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorDarkGray" />
+
+    <org.angmarch.views.NiceSpinner
+        android:id="@+id/spinner_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/btn_create_qr"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:text="生成二维码" />
+
+    <ImageView
+        android:id="@+id/iv_qr"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp" />
+
+
+</LinearLayout>

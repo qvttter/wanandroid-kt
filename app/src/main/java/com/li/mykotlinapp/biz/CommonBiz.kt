@@ -1,6 +1,5 @@
 package com.li.mykotlinapp.biz
 
-import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.base.BaseBiz
 import com.li.mykotlinapp.base.PageDataBean
 import com.li.mykotlinapp.base.BaseResult
@@ -9,8 +8,6 @@ import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.LoginResponse
 import com.li.mykotlinapp.util.FlowUtil
-import com.li.mykotlinapp.util.RxUtil
-import io.reactivex.Observable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

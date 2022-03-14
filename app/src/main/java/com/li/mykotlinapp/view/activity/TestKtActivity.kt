@@ -13,9 +13,9 @@ import com.gengqiquan.result.startActivityWithResult
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.adapter.TestButtonListAdapter
 import com.li.mykotlinapp.base.BaseActivity
-import com.li.mykotlinapp.bean.TestButtonBean
 import com.li.mykotlinapp.test.TestCommonViewActivity
 import com.li.mykotlinapp.test.TestComposeActivity
+import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -47,6 +47,9 @@ class TestKtActivity : BaseActivity() {
         btnList.add("compose")
         btnList.add("commonView")
         btnList.add("imgShake")
+        btnList.add("MainActivity")
+        btnList.add("bluetoothPrinter")
+
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
         rcv_button.layoutManager = LinearLayoutManager(mContext)
@@ -54,8 +57,40 @@ class TestKtActivity : BaseActivity() {
         adapter.data = btnList
 
         initEvent()
-//        getPermission()
+        getPermission()
     }
+
+    private fun getPermission() {
+        RxPermissions(this)
+            .request(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.BLUETOOTH_SCAN
+            ).subscribe(
+                { granted: Boolean ->
+                    if (granted) {
+//                        MaterialDialog(mContext).show {
+//                            message (text= "请允许所有权限")
+//                            positiveButton(R.string.str_confirm){
+//                                getPermission()
+//                            }
+//                            negativeButton(text = "取消"){
+//                                finish()
+//                            }
+//                        }
+                    } else {
+                        finish()
+                    }
+                },
+                { t: Throwable? ->
+                    finish()
+                }
+            )
+    }
+
 
     private fun initEvent() {
         tv_text.setOnClickListener {
@@ -69,6 +104,9 @@ class TestKtActivity : BaseActivity() {
                 }
                 "excel" -> {
                     ExcelActivity.start(mContext)
+                }
+                "MainActivity" ->{
+                    MainActivity.start(mContext)
                 }
                 "scan" -> {
                     startActivityWithResult<ScanActivity>()
@@ -101,6 +139,9 @@ class TestKtActivity : BaseActivity() {
                 "imgShake" -> {
                     var anim = AnimationUtils.loadAnimation(this, R.anim.shake)
                     iv_logo.startAnimation(anim)
+                }
+                "bluetoothPrinter" ->{
+                    BluetoothPrintActivity.start(mContext)
                 }
             }
         }

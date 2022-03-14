@@ -37,5 +37,11 @@ public class TimeUtils {
         }
     }
 
+    public static String getTimeGMTNow() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        sdf.setTimeZone(TimeZone.getTimeZone("gmt"));
+        return sdf.format(new Date());
+    }
+
 
 }

@@ -3,10 +3,12 @@ package com.li.mykotlinapp.base
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.util.ToastUtil
+import com.li.mykotlinapp.util.slideback.SwipeBackHelper
 import com.zyao89.view.zloading.ZLoadingDialog
 import com.zyao89.view.zloading.Z_TYPE
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -23,13 +25,30 @@ abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mContext: Context
     protected var mProgressDialog: MaterialDialog? = null
     protected var loadingDialog: ZLoadingDialog? = null
+    private lateinit var mSwipeBackHelper: SwipeBackHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
         mContext = this
         initData()
+//        mSwipeBackHelper = SwipeBackHelper(this)
+
     }
+
+//    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+//        return if (mSwipeBackHelper != null && mSwipeBackHelper.dispatchTouchEvent(event)) {
+//            true
+//        } else super.dispatchTouchEvent(event)
+//    }
+//
+//    override fun onTouchEvent(event: MotionEvent?): Boolean {
+//        if (mSwipeBackHelper != null) {
+//            mSwipeBackHelper.onTouchEvent(event)
+//        }
+//        return super.onTouchEvent(event)
+//    }
+
 
     abstract fun getLayout(): Int
     abstract fun initData()

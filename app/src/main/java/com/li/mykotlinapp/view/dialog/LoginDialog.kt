@@ -85,7 +85,7 @@ class LoginDialog : BaseVMDialog<MyViewModel, DialogLoginBinding>(R.layout.dialo
 
     override fun onResume() {
         dialog!!.window!!.setLayout(
-            DensityUtil.dip2px(activity, 350f),
+            DensityUtil.dip2px(mContext, 350f),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         dialog!!.setCanceledOnTouchOutside(false)

@@ -41,27 +41,28 @@ class MainActivity : BaseActivity() {
 
     private fun getPermission() {
         RxPermissions(this)
-                .request(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.READ_PHONE_STATE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.CAMERA
-                ).subscribe(
-                        { granted: Boolean ->
-                            if (granted) {
-                                initView()
-                            } else {
-                                finish()
-                            }
-                        },
-                        { t: Throwable? ->
-                            finish()
-                        }
-                )
+            .request(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.BLUETOOTH_SCAN
+            ).subscribe(
+                { granted: Boolean ->
+                    if (granted) {
+                        initView()
+                    } else {
+                        finish()
+                    }
+                },
+                { t: Throwable? ->
+                    finish()
+                }
+            )
     }
 
-    private fun initView(){
+    private fun initView() {
         listenerUpdate()
     }
 
