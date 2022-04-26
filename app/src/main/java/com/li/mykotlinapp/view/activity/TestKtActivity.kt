@@ -10,11 +10,16 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apkfuns.logutils.LogUtils
 import com.gengqiquan.result.startActivityWithResult
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.adapter.TestButtonListAdapter
 import com.li.mykotlinapp.base.BaseActivity
+import com.li.mykotlinapp.bean.bus.LocationBus
+import com.li.mykotlinapp.common.Constants
+import com.li.mykotlinapp.test.BGAQRCodeActivity
 import com.li.mykotlinapp.test.TestCommonViewActivity
 import com.li.mykotlinapp.test.TestComposeActivity
+import com.li.mykotlinapp.test.TextToSpeechActivity
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
@@ -39,6 +44,9 @@ class TestKtActivity : BaseActivity() {
     }
 
     override fun initData() {
+        LiveEventBus.get(Constants.BUS_LOCATION)
+            .post(LocationBus("", ""))
+
         btnList = ArrayList()
         btnList.add("objectBox")
         btnList.add("excel")
@@ -49,6 +57,8 @@ class TestKtActivity : BaseActivity() {
         btnList.add("imgShake")
         btnList.add("MainActivity")
         btnList.add("bluetoothPrinter")
+        btnList.add("TextToSpeech")
+        btnList.add("ScanActivity")
 
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
@@ -142,6 +152,12 @@ class TestKtActivity : BaseActivity() {
                 }
                 "bluetoothPrinter" ->{
                     BluetoothPrintActivity.start(mContext)
+                }
+                "TextToSpeech" ->{
+                    TextToSpeechActivity.start(mContext)
+                }
+                "ScanActivity"->{
+                    ScanActivity.start(mContext)
                 }
             }
         }

@@ -59,7 +59,6 @@ abstract class BaseVMFragment<VM : BaseViewModel, T : ViewBinding>(@LayoutRes va
         initData()
     }
 
-    abstract fun getLayout(): Int
     abstract fun initData()
 
     private fun initVM() {

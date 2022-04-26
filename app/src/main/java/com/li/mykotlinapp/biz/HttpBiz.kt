@@ -2,7 +2,6 @@ package com.li.mykotlinapp.biz
 
 import com.li.mykotlinapp.base.BaseBiz
 import com.li.mykotlinapp.base.PageDataBean
-import com.li.mykotlinapp.base.BaseResult
 import com.li.mykotlinapp.base.CommonResult
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
@@ -12,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -22,13 +20,13 @@ import kotlinx.coroutines.flow.map
  *@Date: 2018/10/23
  *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
-class CommonBiz private constructor() : BaseBiz() {
+class HttpBiz private constructor() : BaseBiz() {
     companion object {
         fun getInstance() = Holder.INSTANCE
     }
 
     private object Holder {
-        val INSTANCE by lazy { CommonBiz() }
+        val INSTANCE by lazy { HttpBiz() }
     }
 
     private var service: Service = retrofit.create(Service::class.java)

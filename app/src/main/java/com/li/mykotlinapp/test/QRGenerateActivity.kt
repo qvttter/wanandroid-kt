@@ -36,6 +36,8 @@ class QRGenerateActivity : BaseActivity() {
         return R.layout.activity_qr_generate
     }
 
+
+
     override fun initData() {
         spinner_key.attachDataSource(keyNameList)
         btn_fast_input_time.setOnClickListener {
@@ -69,9 +71,11 @@ class QRGenerateActivity : BaseActivity() {
 //            }
 
             var cipherText =  DataSignature.dataEncryption(key,content)
+            var compose = "022" + keyNum + "1000" + cipherText
+            LogUtils.e("明文+密文:$compose")
             Observable.just(
                 QRCodeEncoder.syncEncodeQRCode(
-                    "022" + keyNum + "1000" + cipherText,
+                    compose,
                     DensityUtil.dip2px(mContext, 200f)
                 )
             )

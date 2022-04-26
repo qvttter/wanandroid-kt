@@ -15,6 +15,15 @@ object PrefUtil {
     private val mContext = App.instance
 
     /**
+     * j网址
+     * "https://www.javbus.com"-基本网址，需要翻墙
+     */
+    var jUrl: String?
+        get() = getString(mContext, Constants.J_URL, "")
+        set(url) = setString(mContext, Constants.J_URL, url!!)
+
+
+    /**
      * 用户名
      *
      * @param userName

@@ -5,25 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.input.input
-import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.R
-import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.databinding.FragmentMyBinding
-import com.li.mykotlinapp.test.TestComposeActivity
 import com.li.mykotlinapp.util.PrefUtil
 import com.li.mykotlinapp.view.activity.TestKtActivity
 import com.li.mykotlinapp.view.dialog.LoginDialog
+import com.li.mykotlinapp.view.jav.activity.JavMainActivity
 import com.li.mykotlinapp.view.vm.MyViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragment_my) {
-    override fun getLayout(): Int {
-        return R.layout.fragment_my
-    }
-
     override fun initData() {
         lifecycleScope.launch {
             mViewModel.logoutValue.collect {
@@ -42,6 +35,12 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
         }
 
         isLogin()
+
+        binding.tvMyCollectArticle.setOnLongClickListener {
+            JavMainActivity.start(mContext)
+            true
+        }
+
 
         binding.btnLogout.setOnLongClickListener {
             TestKtActivity.start(mContext)

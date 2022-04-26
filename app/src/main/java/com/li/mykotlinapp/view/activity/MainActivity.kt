@@ -2,23 +2,11 @@ package com.li.mykotlinapp.view.activity
 
 import android.Manifest
 import android.content.*
-import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
-import androidx.fragment.app.FragmentTransaction
-import com.li.mykotlinapp.widget.helper.BottomNavigationViewHelper
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.google.android.material.navigation.NavigationView
+import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.util.FloatTool
-import com.li.mykotlinapp.view.fragment.IndexFragment
 import com.tbruyelle.rxpermissions2.RxPermissions
-import com.youth.banner.util.LogUtils
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 
 
 class MainActivity : BaseActivity() {
@@ -63,7 +51,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initView() {
-        listenerUpdate()
+//        listenerUpdate()
     }
 
     private fun listenerUpdate() {

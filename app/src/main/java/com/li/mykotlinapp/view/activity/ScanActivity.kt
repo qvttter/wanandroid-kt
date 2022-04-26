@@ -2,7 +2,6 @@ package com.li.mykotlinapp.view.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import com.ailiwean.core.Result
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
@@ -30,15 +29,10 @@ class ScanActivity : BaseActivity() {
         zxingview.synchLifeStart(this)
         zxingview.setResultListener(object : CusScanView.OnResultListener {
             override fun onResult(content: Result) {
-                var resultIntent = Intent()
-                var bundle =  Bundle()
-                bundle.putString("result", content.text)
-                resultIntent.putExtras(bundle)
-                setResult(RESULT_OK, resultIntent)
-                finish()
             }
         })
     }
+
 
     companion object {
         fun start(content: Context) {

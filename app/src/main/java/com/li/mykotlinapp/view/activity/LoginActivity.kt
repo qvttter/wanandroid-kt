@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
-import com.li.mykotlinapp.bean.LoginResponse
-import com.li.mykotlinapp.biz.CommonBiz
 import com.li.mykotlinapp.util.PrefUtil
-import com.li.mykotlinapp.util.RxUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
 /************************************************************************

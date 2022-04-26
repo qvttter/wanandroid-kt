@@ -21,8 +21,7 @@ import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.base.doFailure
 import com.li.mykotlinapp.base.doSuccess
-import com.li.mykotlinapp.biz.CommonBiz
-import com.li.mykotlinapp.biz.db.DbBiz
+import com.li.mykotlinapp.biz.HttpBiz
 import com.li.mykotlinapp.databinding.FragmentIndexBinding
 import com.li.mykotlinapp.view.activity.CommonWebViewActivity
 import kotlinx.coroutines.flow.catch
@@ -56,10 +55,6 @@ class IndexFragment :
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentIndexBinding
         get() = FragmentIndexBinding::inflate
 
-
-    override fun getLayout(): Int {
-        return R.layout.fragment_index
-    }
 
     override fun initData() {
         //文章
@@ -116,7 +111,7 @@ class IndexFragment :
 
     private fun getMainArticleList(isLoadMore: Boolean) {
         lifecycleScope.launch {
-            CommonBiz.getInstance().getMainArticleList(page)
+            HttpBiz.getInstance().getMainArticleList(page)
                 .onStart {
                 }
                 .catch {

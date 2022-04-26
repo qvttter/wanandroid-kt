@@ -2,10 +2,7 @@ package com.li.mykotlinapp.view.activity
 
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
-import com.li.mykotlinapp.bean.LoginResponse
-import com.li.mykotlinapp.biz.CommonBiz
 import com.li.mykotlinapp.util.PrefUtil
-import com.li.mykotlinapp.util.RxUtil
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

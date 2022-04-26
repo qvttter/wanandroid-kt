@@ -17,11 +17,11 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 
 /************************************************************************
  *@Project: ipu_android
- *@Package_Name: com.easyway.ipu.base
+ *@Package_Name: com.li.mykotlinapp.base
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020-01-06
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 XXXX. All rights reserved.
  *************************************************************************/
 abstract class BaseVMActivity<VM : BaseViewModel,T : ViewBinding> : AppCompatActivity() {
     protected lateinit var mContext: Context

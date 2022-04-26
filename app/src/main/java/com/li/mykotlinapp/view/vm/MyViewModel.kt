@@ -1,13 +1,10 @@
 package com.li.mykotlinapp.view.vm
 
-import androidx.lifecycle.viewModelScope
 import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.base.BaseViewModel
 import com.li.mykotlinapp.base.doFailure
 import com.li.mykotlinapp.base.doSuccess
-import com.li.mykotlinapp.bean.BannerBean
-import com.li.mykotlinapp.bean.LoginResponse
-import com.li.mykotlinapp.biz.CommonBiz
+import com.li.mykotlinapp.biz.HttpBiz
 import com.li.mykotlinapp.util.PrefUtil
 import kotlinx.coroutines.flow.*
 
@@ -25,7 +22,7 @@ class MyViewModel : BaseViewModel() {
 
     fun login(username: String, psw: String) {
         launch {
-            CommonBiz.getInstance().login(username, psw)
+            HttpBiz.getInstance().login(username, psw)
                 .onStart {
                     isLoading.value = true
                 }
@@ -51,7 +48,7 @@ class MyViewModel : BaseViewModel() {
 
     fun logout() {
         launch {
-            CommonBiz.getInstance().logout()
+            HttpBiz.getInstance().logout()
                 .onStart {
                     isLoading.value = true
                 }
@@ -77,7 +74,7 @@ class MyViewModel : BaseViewModel() {
     //收藏的文章
     fun getCollect() {
         launch {
-            CommonBiz.getInstance().getMyCollectArticleList(0)
+            HttpBiz.getInstance().getMyCollectArticleList(0)
                 .onStart {
                     isLoading.value = true
                 }
