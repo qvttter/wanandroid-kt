@@ -110,6 +110,7 @@
         <activity android:name=".test.TextToSpeechActivity" />
         <activity android:name=".test.BGAQRCodeActivity" />
         <activity android:name=".view.jav.activity.JavMainActivity" />
+        <activity android:name=".view.jav.activity.JavMovieDetailActivity" />
 
 
         <service android:name=".service.MultiScreenService" />

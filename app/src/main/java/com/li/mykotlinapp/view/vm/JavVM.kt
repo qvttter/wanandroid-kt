@@ -6,6 +6,7 @@ import com.li.mykotlinapp.base.doFailure
 import com.li.mykotlinapp.base.doSuccess
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.jav.JavItemBean
+import com.li.mykotlinapp.bean.jav.JavMovieDetailBean
 import com.li.mykotlinapp.biz.HttpBiz
 import com.li.mykotlinapp.biz.JHttpBiz
 import kotlinx.coroutines.flow.*
@@ -20,10 +21,11 @@ import kotlinx.coroutines.flow.*
  *************************************************************************/
 class JavVM : BaseViewModel() {
     val mosaicListValue = MutableStateFlow<List<JavItemBean>>(listOf())
+    val movieDetailValue = MutableStateFlow<JavMovieDetailBean?>(null)
 
     fun getMosaicList(page: Int) {
         launch {
-            JHttpBiz.getInstance().getMosaicList()
+            JHttpBiz.getInstance().getMosaicList(page)
                 .onStart {
                     isLoading.value = true
                 }
@@ -35,7 +37,7 @@ class JavVM : BaseViewModel() {
                 }
                 .collect { result ->
                     result.doFailure { throwable ->
-                        message.value = "获取你内容出错"
+                        message.value = "获取内容出错"
                     }
                     result.doSuccess { value ->
                         mosaicListValue.value = value
@@ -44,4 +46,26 @@ class JavVM : BaseViewModel() {
         }
     }
 
+    fun getMovieDetail(movieCode: String) {
+        launch {
+            JHttpBiz.getInstance().getMovieDetail(movieCode)
+                .onStart {
+                    isLoading.value = true
+                }
+                .catch {
+                    LogUtils.e(it.message)
+                }
+                .onCompletion {
+                    isLoading.value = false
+                }
+                .collect { result ->
+                    result.doFailure { throwable ->
+                        message.value = "获取内容出错"
+                    }
+                    result.doSuccess { value ->
+                        movieDetailValue.value = value
+                    }
+                }
+        }
+    }
 }

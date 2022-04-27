@@ -20,8 +20,11 @@ import retrofit2.http.*
  *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 interface JService {
-    @GET("/")
-    suspend fun getMosaicList(): ResponseBody
+    @GET("/page/{page}")
+    suspend fun getMosaicList(@Path("page") page:Int): ResponseBody
+
+    @GET("/{movieCode}")
+    suspend fun getMovieDetail(@Path("movieCode") movieCode:String): ResponseBody
 
     @GET("article/list/{page}/json")
     suspend fun getMainArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>

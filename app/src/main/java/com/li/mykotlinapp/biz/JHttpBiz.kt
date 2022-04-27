@@ -5,6 +5,7 @@ import com.li.mykotlinapp.base.CommonResult
 import com.li.mykotlinapp.base.JBaseRetrofit
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.jav.JavItemBean
+import com.li.mykotlinapp.bean.jav.JavMovieDetailBean
 import com.li.mykotlinapp.util.FlowUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -31,11 +32,19 @@ class JHttpBiz private constructor() : JBaseRetrofit() {
 
     private var service: JService = retrofit.create(JService::class.java)
 
-    suspend fun getMosaicList(): Flow<CommonResult<List<JavItemBean>>> {
+    suspend fun getMosaicList(page:Int): Flow<CommonResult<List<JavItemBean>>> {
         return flow {
-            var result =  service.getMosaicList()
+            var result =  service.getMosaicList(page)
             var infoModel =result.string()
             emit(FlowUtil.handleMovieList(infoModel))
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getMovieDetail(movieCode:String): Flow<CommonResult<JavMovieDetailBean>> {
+        return flow {
+            var result =  service.getMovieDetail(movieCode)
+            var infoModel =result.string()
+            emit(FlowUtil.handleMovieDetail(infoModel))
         }.flowOn(Dispatchers.IO)
     }
 

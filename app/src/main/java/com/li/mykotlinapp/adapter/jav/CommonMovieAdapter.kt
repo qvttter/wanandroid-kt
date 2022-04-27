@@ -24,7 +24,6 @@ class CommonMovieAdapter(@Nullable data: MutableList<JavItemBean>) : BaseQuickAd
         Glide.with(context)
             .load(item.img)
             .into(ivCover)
-        LogUtils.e("ivCover:"+item.img)
 
         holder.setText(R.id.tv_title,item.title)
         holder.setText(R.id.tv_code,item.code)

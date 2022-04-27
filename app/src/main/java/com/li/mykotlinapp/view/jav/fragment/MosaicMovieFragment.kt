@@ -12,6 +12,7 @@ import com.li.mykotlinapp.adapter.jav.CommonMovieAdapter
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.bean.jav.JavItemBean
 import com.li.mykotlinapp.databinding.FragmentMosaicBinding
+import com.li.mykotlinapp.view.jav.activity.JavMovieDetailActivity
 import com.li.mykotlinapp.view.vm.JavVM
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -62,6 +63,12 @@ class MosaicMovieFragment :BaseVMFragment<JavVM, FragmentMosaicBinding>(R.layout
         binding.rcvMosaic.adapter = adapter
         binding.rcvMosaic.layoutManager =
             (StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL))
+
+        adapter.setOnItemClickListener { adapter, view, position ->
+            var bean = adapter.getItem(position) as JavItemBean
+            JavMovieDetailActivity.start(mContext,bean.code)
+
+        }
 
         getData(1)
     }
