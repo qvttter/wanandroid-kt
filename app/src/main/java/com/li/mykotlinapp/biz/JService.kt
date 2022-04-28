@@ -20,11 +20,19 @@ import retrofit2.http.*
  *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 interface JService {
+    @GET("/forum/member.php?mod=logging&action=login&referer=%2F%2Fwww.seejav.co%2F")
+    suspend fun login(): ResponseBody
+
+    //https://www.seejav.co/forum/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=LPc83&inajax=1
+
     @GET("/page/{page}")
     suspend fun getMosaicList(@Path("page") page:Int): ResponseBody
 
     @GET("/{movieCode}")
     suspend fun getMovieDetail(@Path("movieCode") movieCode:String): ResponseBody
+
+    @GET("/member/&mdl=favor&mod=ce&sort=0&page={page}")
+    suspend fun getMyMosaicMovie(@Path("page") page:Int): ResponseBody
 
     @GET("article/list/{page}/json")
     suspend fun getMainArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>

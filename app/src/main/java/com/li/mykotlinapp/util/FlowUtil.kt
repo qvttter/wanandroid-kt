@@ -51,9 +51,7 @@ object FlowUtil {
                 var title = photoInfo.select("span")
                 //item tag
                 var itemTag = photoInfo.select("date")
-                LogUtils.e("itemTag:"+itemTag)
                 var code = itemTag[0].childNodes()[0].toString().replace("\n","")
-                LogUtils.e("code:"+code)
                 var date =  itemTag[1].childNodes()[0].toString().replace("\n","")
 
                 var bean = JavItemBean(

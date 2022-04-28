@@ -111,6 +111,7 @@
         <activity android:name=".test.BGAQRCodeActivity" />
         <activity android:name=".view.jav.activity.JavMainActivity" />
         <activity android:name=".view.jav.activity.JavMovieDetailActivity" />
+        <activity android:name=".view.jav.activity.JavMyMosaicMovieActivity" />
 
 
         <service android:name=".service.MultiScreenService" />

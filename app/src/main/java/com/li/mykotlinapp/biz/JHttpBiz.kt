@@ -48,4 +48,11 @@ class JHttpBiz private constructor() : JBaseRetrofit() {
         }.flowOn(Dispatchers.IO)
     }
 
+    suspend fun getMyMosaicMovie(page:Int): Flow<CommonResult<List<JavItemBean>>> {
+        return flow {
+            var result =  service.getMyMosaicMovie(page)
+            var infoModel =result.string()
+            emit(FlowUtil.handleMovieList(infoModel))
+        }.flowOn(Dispatchers.IO)
+    }
 }

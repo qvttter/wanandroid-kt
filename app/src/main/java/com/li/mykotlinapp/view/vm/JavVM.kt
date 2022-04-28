@@ -23,6 +23,7 @@ class JavVM : BaseViewModel() {
     val mosaicListValue = MutableStateFlow<List<JavItemBean>>(listOf())
     val movieDetailValue = MutableStateFlow<JavMovieDetailBean?>(null)
 
+    //有码列表
     fun getMosaicList(page: Int) {
         launch {
             JHttpBiz.getInstance().getMosaicList(page)
@@ -31,11 +32,14 @@ class JavVM : BaseViewModel() {
                 }
                 .catch {
                     LogUtils.e(it.message)
+                    isLoading.value = false
                 }
                 .onCompletion {
                     isLoading.value = false
                 }
                 .collect { result ->
+                    isLoading.value = false
+
                     result.doFailure { throwable ->
                         message.value = "获取内容出错"
                     }
@@ -46,6 +50,7 @@ class JavVM : BaseViewModel() {
         }
     }
 
+    //电影详情
     fun getMovieDetail(movieCode: String) {
         launch {
             JHttpBiz.getInstance().getMovieDetail(movieCode)
@@ -64,6 +69,30 @@ class JavVM : BaseViewModel() {
                     }
                     result.doSuccess { value ->
                         movieDetailValue.value = value
+                    }
+                }
+        }
+    }
+    //电影详情
+    fun getMyMosaicMovie(page: Int) {
+        launch {
+            JHttpBiz.getInstance().getMyMosaicMovie(page)
+                .onStart {
+                    isLoading.value = true
+                }
+                .catch {
+                    LogUtils.e(it.message)
+                    isLoading.value = false
+                }
+                .onCompletion {
+                    isLoading.value = false
+                }
+                .collect { result ->
+                    result.doFailure { throwable ->
+                        message.value = "获取内容出错"
+                    }
+                    result.doSuccess { value ->
+                        mosaicListValue.value = value
                     }
                 }
         }

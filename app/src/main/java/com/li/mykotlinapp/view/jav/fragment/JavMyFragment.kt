@@ -8,6 +8,7 @@ import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.databinding.FragmentJavMyBinding
 import com.li.mykotlinapp.util.PrefUtil
+import com.li.mykotlinapp.view.jav.activity.JavMyMosaicMovieActivity
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -28,7 +29,7 @@ class JavMyFragment : BaseFragment<FragmentJavMyBinding>(R.layout.fragment_jav_m
 
     override fun initData() {
         PrefUtil.jUrl = "https://www.seejav.co"
-        binding.btnJavHost.setOnClickListener {
+        binding.tvJavHost.setOnClickListener {
             MaterialDialog(mContext).show {
                 input(prefill = PrefUtil.jUrl) { dialog, text ->
                     PrefUtil.jUrl = text.toString()
@@ -36,6 +37,11 @@ class JavMyFragment : BaseFragment<FragmentJavMyBinding>(R.layout.fragment_jav_m
                 positiveButton(R.string.str_confirm)
             }
         }
+
+        binding.tvMyMosaicMovie.setOnClickListener {
+            JavMyMosaicMovieActivity.start(mContext)
+        }
+
 
     }
 }
