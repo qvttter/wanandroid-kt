@@ -92,7 +92,7 @@
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".view.activity.CommonWebViewActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="nosensor" />
 
         <activity android:name=".view.activity.ObjectActivity" />
         <activity android:name=".test.TestViewActivity"></activity>
@@ -112,6 +112,8 @@
         <activity android:name=".view.jav.activity.JavMainActivity" />
         <activity android:name=".view.jav.activity.JavMovieDetailActivity" />
         <activity android:name=".view.jav.activity.JavMyMosaicMovieActivity" />
+        <activity android:name=".view.activity.OpenGLActivity" />
+        <activity android:name=".test.MQTTActivity" />
 
 
         <service android:name=".service.MultiScreenService" />
@@ -127,6 +129,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
         </provider>
+
+        <service
+            android:name=".service.MQTTService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <!-- Mqtt服务 -->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+
     </application>
 
 </manifest>

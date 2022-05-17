@@ -34,8 +34,8 @@ class MainActivity : BaseActivity() {
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CAMERA,
-                Manifest.permission.BLUETOOTH_SCAN
+                Manifest.permission.CAMERA
+//                Manifest.permission.BLUETOOTH_SCAN
             ).subscribe(
                 { granted: Boolean ->
                     if (granted) {

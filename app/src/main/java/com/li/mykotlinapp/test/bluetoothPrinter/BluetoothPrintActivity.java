@@ -130,9 +130,9 @@ public class BluetoothPrintActivity extends BaseActivity {
     }
 
     private void checkSelfPermission() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        }
     }
 
     private void cancelDiscovery() {

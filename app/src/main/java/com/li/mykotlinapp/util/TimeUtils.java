@@ -58,5 +58,10 @@ public class TimeUtils {
         return cal.getTimeInMillis()/1000;
     }
 
+    public static String getCurrentTime(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(new Date());
+    }
+
 
 }

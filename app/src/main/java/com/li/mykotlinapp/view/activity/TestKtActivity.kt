@@ -16,10 +16,7 @@ import com.li.mykotlinapp.adapter.TestButtonListAdapter
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.bean.bus.LocationBus
 import com.li.mykotlinapp.common.Constants
-import com.li.mykotlinapp.test.BGAQRCodeActivity
-import com.li.mykotlinapp.test.TestCommonViewActivity
-import com.li.mykotlinapp.test.TestComposeActivity
-import com.li.mykotlinapp.test.TextToSpeechActivity
+import com.li.mykotlinapp.test.*
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
@@ -59,6 +56,8 @@ class TestKtActivity : BaseActivity() {
         btnList.add("bluetoothPrinter")
         btnList.add("TextToSpeech")
         btnList.add("ScanActivity")
+        btnList.add("OpenGLActivity")
+        btnList.add("MQTT")
 
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
@@ -77,8 +76,8 @@ class TestKtActivity : BaseActivity() {
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CAMERA,
-                Manifest.permission.BLUETOOTH_SCAN
+                Manifest.permission.CAMERA
+//                Manifest.permission.BLUETOOTH_SCAN
             ).subscribe(
                 { granted: Boolean ->
                     if (granted) {
@@ -158,6 +157,12 @@ class TestKtActivity : BaseActivity() {
                 }
                 "ScanActivity"->{
                     ScanActivity.start(mContext)
+                }
+                "OpenGLActivity" ->{
+                    OpenGLActivity.start(mContext)
+                }
+                "MQTT"->{
+                    MQTTActivity.start(mContext)
                 }
             }
         }

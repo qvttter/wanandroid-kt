@@ -9,11 +9,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.li.mykotlinapp"
         minSdkVersion 28
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -90,15 +90,15 @@ dependencies {
     implementation('com.github.bumptech.glide:glide:4.12.0') {
         exclude group: "com.android.support"
     }
-    implementation 'com.google.android.material:material:1.4.0-alpha02'
-    implementation 'androidx.appcompat:appcompat:1.3.0-alpha01'
+    implementation 'com.google.android.material:material:1.5.0-alpha01'
+    implementation 'androidx.appcompat:appcompat:1.4.0-alpha03'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.fragment:fragment-ktx:1.3.6")
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     //权限
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     //md-dialog
@@ -165,8 +165,10 @@ dependencies {
     //bugly
     implementation 'com.tencent.bugly:crashreport:3.4.4'
 
-
     implementation 'org.jsoup:jsoup:1.14.3'
+    //mqtt
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
 }
 

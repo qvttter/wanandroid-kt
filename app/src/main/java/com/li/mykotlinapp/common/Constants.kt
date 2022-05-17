@@ -25,7 +25,8 @@ class Constants {
         const val DATA_CACHE_KEY_COOKIES = "data_cache_key_cookies"
         //LiveEventBus消息总线通知
         const val BUS_LOCATION = "bus_location"
-
+        //LiveEventBus消息总线通知
+        const val MQTT_MSG = "mqtt_msg"
 
     }
 

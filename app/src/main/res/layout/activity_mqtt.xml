@@ -3,10 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    //provisionRequest
+    <Button
+        android:id="@+id/btn_provisionRequest"
+        android:text="provisionRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_mqtt"
         android:text="mqtt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_request_RPC_Topic"
+        android:text="requestRPCTopic"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    //Device provisioning
+    <Button
+        android:id="@+id/btn_device_provisioning"
+        android:text="Device provisioning"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
