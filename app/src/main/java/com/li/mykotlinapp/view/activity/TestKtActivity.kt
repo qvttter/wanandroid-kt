@@ -8,7 +8,6 @@ import android.provider.Settings
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.apkfuns.logutils.LogUtils
 import com.gengqiquan.result.startActivityWithResult
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.R
@@ -18,7 +17,9 @@ import com.li.mykotlinapp.bean.bus.LocationBus
 import com.li.mykotlinapp.common.Constants
 import com.li.mykotlinapp.test.*
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
+import com.li.mykotlinapp.util.RxTools
 import com.tbruyelle.rxpermissions2.RxPermissions
+import com.youth.banner.util.LogUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
@@ -33,6 +34,9 @@ import java.util.concurrent.TimeUnit
  *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class TestKtActivity : BaseActivity() {
+    private val pkgName = "com.ewivt.p92.upgradeguardianapp"
+    private val pkgNameClass = "com.ewivt.p92.upgradeguardianapp.view.UpdateActivity"
+
     lateinit var adapter: TestButtonListAdapter
     lateinit var btnList: MutableList<String>
 
@@ -41,9 +45,6 @@ class TestKtActivity : BaseActivity() {
     }
 
     override fun initData() {
-        LiveEventBus.get(Constants.BUS_LOCATION)
-            .post(LocationBus("", ""))
-
         btnList = ArrayList()
         btnList.add("objectBox")
         btnList.add("excel")
@@ -58,11 +59,13 @@ class TestKtActivity : BaseActivity() {
         btnList.add("ScanActivity")
         btnList.add("OpenGLActivity")
         btnList.add("MQTT")
+        btnList.add("DoubleScreen")
+        btnList.add("TestUpdate")
 
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
         rcv_button.layoutManager = LinearLayoutManager(mContext)
-        rcv_button.addItemDecoration(DividerItemDecoration(mContext,LinearLayoutManager.VERTICAL))
+        rcv_button.addItemDecoration(DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL))
         adapter.data = btnList
 
         initEvent()
@@ -114,7 +117,7 @@ class TestKtActivity : BaseActivity() {
                 "excel" -> {
                     ExcelActivity.start(mContext)
                 }
-                "MainActivity" ->{
+                "MainActivity" -> {
                     MainActivity.start(mContext)
                 }
                 "scan" -> {
@@ -149,29 +152,35 @@ class TestKtActivity : BaseActivity() {
                     var anim = AnimationUtils.loadAnimation(this, R.anim.shake)
                     iv_logo.startAnimation(anim)
                 }
-                "bluetoothPrinter" ->{
+                "bluetoothPrinter" -> {
                     BluetoothPrintActivity.start(mContext)
                 }
-                "TextToSpeech" ->{
+                "TextToSpeech" -> {
                     TextToSpeechActivity.start(mContext)
                 }
-                "ScanActivity"->{
+                "ScanActivity" -> {
                     ScanActivity.start(mContext)
                 }
-                "OpenGLActivity" ->{
+                "OpenGLActivity" -> {
                     OpenGLActivity.start(mContext)
                 }
-                "MQTT"->{
+                "MQTT" -> {
                     MQTTActivity.start(mContext)
+                }
+                "DoubleScreen" ->{
+//                    val i = packageManager.getLaunchIntentForPackage("com.easyway.testsecondscreen")
+//                    startActivity(i)
+                    TestDoubleScreenActivity.start(mContext)
+                }
+                "TestUpdate" ->{
+                    LiveEventBus.get<String>("attributes")
+                        .postAcrossApp("hahaha")
+                    RxTools.openApp(pkgName, pkgNameClass)
+
+                    LogUtils.e("向辅助app发送消息")
                 }
             }
         }
-
-//        btn_open_double_app.setOnClickListener {
-//            val i = packageManager.getLaunchIntentForPackage("com.easyway.testsecondscreen")
-//            startActivity(i)
-//        }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -181,14 +190,14 @@ class TestKtActivity : BaseActivity() {
         }
 
         if (requestCode == 100) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (Settings.canDrawOverlays(this)) {
-                    shortToast("ACTION_MANAGE_OVERLAY_PERMISSION权限成功")
-                    TestDoubleScreenActivity.start(mContext)
+            if (Settings.canDrawOverlays(this)) {
+                LogUtils.e("ACTION_MANAGE_OVERLAY_PERMISSION权限成功")
+                shortToast("ACTION_MANAGE_OVERLAY_PERMISSION权限成功")
+                TestDoubleScreenActivity.start(mContext)
 
-                } else {
-                    shortToast("ACTION_MANAGE_OVERLAY_PERMISSION权限已被拒绝")
-                }
+            } else {
+                shortToast("ACTION_MANAGE_OVERLAY_PERMISSION权限已被拒绝")
+                LogUtils.e("ACTION_MANAGE_OVERLAY_PERMISSION权限已被拒绝")
             }
 
         }

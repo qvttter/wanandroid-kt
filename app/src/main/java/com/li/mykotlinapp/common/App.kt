@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.biz.db.ObjectBox
-import com.tencent.bugly.Bugly
+//import com.tencent.bugly.Bugly
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -28,7 +28,7 @@ class App : Application() {
         super.onCreate()
         ObjectBox.init(this)
 
-        Bugly.init(applicationContext, "d0cd42083f", true)
+//        Bugly.init(applicationContext, "d0cd42083f", true)
 
         LiveEventBus
             .config()

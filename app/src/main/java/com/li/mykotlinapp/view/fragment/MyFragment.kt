@@ -9,6 +9,7 @@ import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.databinding.FragmentMyBinding
 import com.li.mykotlinapp.util.PrefUtil
+import com.li.mykotlinapp.view.activity.TestDoubleScreenActivity
 import com.li.mykotlinapp.view.activity.TestKtActivity
 import com.li.mykotlinapp.view.dialog.LoginDialog
 import com.li.mykotlinapp.view.jav.activity.JavMainActivity
@@ -40,6 +41,12 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
             JavMainActivity.start(mContext)
             true
         }
+
+        binding.tvMyShareProject.setOnLongClickListener {
+            TestDoubleScreenActivity.start(mContext)
+            true
+        }
+
 
 
         binding.btnLogout.setOnLongClickListener {

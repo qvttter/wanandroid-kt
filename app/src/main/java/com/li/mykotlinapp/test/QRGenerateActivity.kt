@@ -49,6 +49,9 @@ class QRGenerateActivity : BaseActivity() {
             var yyyymmddHHMMSSmmm = et_yyyymmddHHMMSSmmm.text.toString()
             var fare_code = et_fare_code.text.toString()
             var traveler_num = et_traveler_num.text.toString()
+            var smartType = et_smart_type.text.toString()
+            var stationCode = et_station_code.text.toString()
+            var jierudianleixing = et_jierudianleixing.text.toString()
 
             if (yyyymmddHHMMSSmmm.isEmpty() || fare_code.isEmpty() || traveler_num.isEmpty()) {
                 shortToast("请输入内容")
@@ -60,7 +63,7 @@ class QRGenerateActivity : BaseActivity() {
             var keyNum = spinner_key.selectedIndex + 1
             LogUtils.e("选择秘钥:$key；秘钥版本号:$keyNum")
             var content =
-                yyyymmddHHMMSSmmm + "10000000010000000061111100110000000001000000000211" + fare_code + traveler_num + "0000"
+                yyyymmddHHMMSSmmm + "100000000100000000"+jierudianleixing+stationCode+"10000000001000000000"+smartType+"11" + fare_code + traveler_num + "0000"
             LogUtils.e("原文:" + content)
 //            var cipherText = ""
 //            try {

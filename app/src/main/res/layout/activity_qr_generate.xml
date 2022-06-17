@@ -24,6 +24,78 @@
         android:padding="4dp"
         android:textSize="18sp" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="接入点类型"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_jierudianleixing"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/shape_black_stroke"
+            android:hint="6"
+            android:maxEms="101"
+            android:padding="4dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="station code"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_station_code"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/shape_black_stroke"
+            android:hint="00000001"
+            android:maxEms="101"
+            android:padding="4dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="smart_type"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/et_smart_type"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/shape_black_stroke"
+            android:hint="2"
+            android:maxEms="101"
+            android:padding="4dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+
     <EditText
         android:id="@+id/et_fare_code"
         android:layout_width="match_parent"

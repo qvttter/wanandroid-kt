@@ -2,16 +2,19 @@ package com.li.mykotlinapp.view.activity
 
 import android.Manifest
 import android.content.*
+import androidx.lifecycle.Observer
 import com.apkfuns.logutils.LogUtils
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.util.FloatTool
+import com.li.mykotlinapp.util.RxTools
 import com.tbruyelle.rxpermissions2.RxPermissions
 
 
 class MainActivity : BaseActivity() {
-    private val pkgName = "io.ionic.starter"
-    private val pkgNameClass = "io.ionic.starter.MainActivity"
+    private val pkgName = "com.easyway.pdp"
+    private val pkgNameClass = "com.easyway.pdp.MainActivity"
 
     override fun getLayout(): Int {
         return R.layout.activity_main
@@ -52,6 +55,16 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
 //        listenerUpdate()
+//        var b = RxTools.isAppRoot()
+//        LogUtils.e("是否root："+b)
+
+
+        LiveEventBus
+            .get("attributes", String::class.java)
+            .observe(this, Observer {
+                LogUtils.e("收到来自PDP的消息："+it)
+
+            })
     }
 
     private fun listenerUpdate() {
