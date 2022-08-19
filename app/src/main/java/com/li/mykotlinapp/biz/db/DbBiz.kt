@@ -13,8 +13,8 @@ import io.objectbox.BoxStore
  *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class DbBiz private constructor() {
-    private lateinit var boxStore: BoxStore
-    private lateinit var userDb: Box<UserDbBean>
+    private  var boxStore: BoxStore
+    private  var userDb: Box<UserDbBean>
 
     init {
         boxStore = ObjectBox.boxStore

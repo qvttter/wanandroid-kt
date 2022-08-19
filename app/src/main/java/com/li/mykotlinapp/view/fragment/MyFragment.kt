@@ -47,8 +47,6 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
             true
         }
 
-
-
         binding.btnLogout.setOnLongClickListener {
             TestKtActivity.start(mContext)
             true

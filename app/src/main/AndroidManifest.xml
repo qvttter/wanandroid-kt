@@ -57,10 +57,10 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".test.QRGenerateActivity"
@@ -74,17 +74,18 @@
 
         <activity
             android:name=".view.activity.TestKtActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
 
-                <!--协议部分-->
-<!--                <data android:scheme="scheme" android:host="mhost" android:path="/main" />-->
-<!--                <category android:name="android.intent.category.DEFAULT"/>-->
-<!--                <action android:name="android.intent.action.VIEW"/>-->
-<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
-            </intent-filter>
+<!--                &lt;!&ndash;协议部分&ndash;&gt;-->
+<!--&lt;!&ndash;                <data android:scheme="scheme" android:host="mhost" android:path="/main" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <category android:name="android.intent.category.DEFAULT"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <action android:name="android.intent.action.VIEW"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <category android:name="android.intent.category.BROWSABLE"/>&ndash;&gt;-->
+<!--            </intent-filter>-->
 
         </activity>
 
@@ -120,11 +121,15 @@
         <activity android:name=".view.jav.activity.JavMyMosaicMovieActivity" />
         <activity android:name=".view.activity.OpenGLActivity" />
         <activity android:name=".test.MQTTActivity" />
+        <activity android:name=".test.DispatchEventActivity" />
+        <activity android:name=".test.ScopeActivity" />
+        <activity android:name=".view.activity.TestRxjava" />
+        <activity android:name=".test.TestXDCardFunctionActivity" />
 
 
-        <service android:name=".service.MultiScreenService" />
-        <service android:name=".service.LocationService" />
-        <service android:name=".service.GpsService" />
+        <!--        <service android:name=".service.MultiScreenService" />-->
+<!--        <service android:name=".service.LocationService" />-->
+<!--        <service android:name=".service.GpsService" />-->
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -136,12 +141,12 @@
                 android:resource="@xml/rc_file_path" />
         </provider>
 
-        <service
-            android:name=".service.MQTTService"
-            android:enabled="true"
-            android:exported="true"></service>
-        <!-- Mqtt服务 -->
-        <service android:name="org.eclipse.paho.android.service.MqttService" />
+<!--        <service-->
+<!--            android:name=".service.MQTTService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"></service>-->
+<!--        &lt;!&ndash; Mqtt服务 &ndash;&gt;-->
+<!--        <service android:name="org.eclipse.paho.android.service.MqttService" />-->
 
     </application>
 

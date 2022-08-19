@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Point
+import android.net.ConnectivityManager
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.*
@@ -24,9 +25,6 @@ class CommonUtils {
     /**
      * save cookie string
      */
-
-
-
     companion object {
         fun <T> getClass(t: Any): Class<T> {
             // 通过反射 获取父类泛型 (T) 对应 Class类
@@ -133,5 +131,13 @@ class CommonUtils {
             val contentHeight: Int = CommonUtils.getScreenHeight(context)
             return totalHeight - contentHeight
         }
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val manager = context.applicationContext.getSystemService(
+                Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val info = manager.activeNetworkInfo
+            return !(null == info || !info.isAvailable)
+        }
+
     }
 }

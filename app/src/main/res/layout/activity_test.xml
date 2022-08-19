@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 
+    <org.angmarch.views.NiceSpinner
+        android:id="@+id/spinner_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_width="30dp"

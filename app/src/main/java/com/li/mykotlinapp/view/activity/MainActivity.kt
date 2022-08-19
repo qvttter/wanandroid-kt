@@ -37,7 +37,8 @@ class MainActivity : BaseActivity() {
                 Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CAMERA
+                Manifest.permission.CAMERA,
+//                Manifest.permission.SYSTEM_ALERT_WINDOW
 //                Manifest.permission.BLUETOOTH_SCAN
             ).subscribe(
                 { granted: Boolean ->
@@ -55,10 +56,6 @@ class MainActivity : BaseActivity() {
 
     private fun initView() {
 //        listenerUpdate()
-//        var b = RxTools.isAppRoot()
-//        LogUtils.e("是否root："+b)
-
-
         LiveEventBus
             .get("attributes", String::class.java)
             .observe(this, Observer {

@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TestJavaActivity extends BaseActivity {
     public static final String BASE_URL = "http://www.wanandroid.com/";
 
+
     MZBannerView mzBannerView;
 
     @Override
@@ -50,7 +51,6 @@ public class TestJavaActivity extends BaseActivity {
 
         List<Button> bList = new ArrayList<>();
         printButtonText(bList);
-
     }
 
     private void printButtonText(List<? extends TextView> textViews){

@@ -7,8 +7,7 @@ import com.li.mykotlinapp.base.BaseFragment
 import com.li.mykotlinapp.databinding.FragmentWeChatBinding
 
 class WeChatFragment : BaseFragment<FragmentWeChatBinding>(R.layout.fragment_we_chat) {
-    override fun initData() {
-    }
+
 
     companion object {
         fun newInstance(): WeChatFragment = WeChatFragment()
@@ -16,5 +15,9 @@ class WeChatFragment : BaseFragment<FragmentWeChatBinding>(R.layout.fragment_we_
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentWeChatBinding
         get() = FragmentWeChatBinding::inflate
+
+
+    override fun initData() {
+    }
 
 }

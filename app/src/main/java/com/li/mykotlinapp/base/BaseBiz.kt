@@ -45,15 +45,39 @@ open class BaseBiz {
     var retrofit: Retrofit
     var mContext: Context
     var okHttpClient: OkHttpClient
+    private val cookieJar by lazy { PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.instance)) }
+
 
     constructor() {
         mContext = App.instance
-        val cookieJar: PersistentCookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(mContext))
-//        val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(mContext))
+//        val cookieJar: PersistentCookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(mContext))
         okHttpClient = OkHttpClient.Builder()
             .connectTimeout(20000, TimeUnit.MILLISECONDS)
             .readTimeout(20000, TimeUnit.MILLISECONDS)
             .cookieJar(cookieJar)
+            .addInterceptor { chain ->
+                var request = chain.request()
+                if (!CommonUtils.isNetworkAvailable(mContext)) {
+                    request = request.newBuilder()
+                        .cacheControl(CacheControl.FORCE_CACHE)
+                        .build()
+                }
+                val response = chain.proceed(request)
+                if (!CommonUtils.isNetworkAvailable(mContext)) {
+                    val maxAge = 60 * 60
+                    response.newBuilder()
+                        .removeHeader("Pragma")
+                        .header("Cache-Control", "public, max-age=$maxAge")
+                        .build()
+                } else {
+                    val maxStale = 60 * 60 * 24 * 28 // tolerate 4-weeks stale
+                    response.newBuilder()
+                        .removeHeader("Pragma")
+                        .header("Cache-Control", "public, only-if-cached, max-stale=$maxStale")
+                        .build()
+                }
+                response
+            }
 //            .addInterceptor(ResponseCookieInterceptor())
 //            .addInterceptor(SetResponseCookieInterceptor())
             .build()

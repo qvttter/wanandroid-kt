@@ -3,9 +3,11 @@ package com.li.mykotlinapp.view.activity
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.content.res.Configuration
+import android.os.Bundle
 import android.provider.Settings
 import android.view.animation.AnimationUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gengqiquan.result.startActivityWithResult
@@ -13,17 +15,19 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.adapter.TestButtonListAdapter
 import com.li.mykotlinapp.base.BaseActivity
-import com.li.mykotlinapp.bean.bus.LocationBus
-import com.li.mykotlinapp.common.Constants
 import com.li.mykotlinapp.test.*
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
-import com.li.mykotlinapp.util.RxTools
 import com.tbruyelle.rxpermissions2.RxPermissions
-import com.youth.banner.util.LogUtils
+import com.apkfuns.logutils.LogUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
 import java.util.concurrent.TimeUnit
+import kotlin.system.exitProcess
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -39,12 +43,25 @@ class TestKtActivity : BaseActivity() {
 
     lateinit var adapter: TestButtonListAdapter
     lateinit var btnList: MutableList<String>
+    private var job: Job? = null
 
     override fun getLayout(): Int {
         return R.layout.activity_test
     }
 
     override fun initData() {
+        flow {
+            for (i in 60 downTo 0) {
+                emit(i)
+                delay(1000)
+            }
+        }
+            .flowOn(Dispatchers.Default)
+            .onCompletion { tv_text.append("倒计时结束\n") }
+            .onEach{tv_text.append( "倒计时:${it}s\n")}
+            .flowOn(Dispatchers.Main)
+            .launchIn(lifecycleScope)
+
         btnList = ArrayList()
         btnList.add("objectBox")
         btnList.add("excel")
@@ -58,15 +75,21 @@ class TestKtActivity : BaseActivity() {
         btnList.add("TextToSpeech")
         btnList.add("ScanActivity")
         btnList.add("OpenGLActivity")
-        btnList.add("MQTT")
         btnList.add("DoubleScreen")
         btnList.add("TestUpdate")
+        btnList.add("dispatchEvent")
+        btnList.add("scope")
+        btnList.add("xiaodaoda")
+        btnList.add("dadaoxiao")
+        btnList.add("TestRxjava")
 
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
         rcv_button.layoutManager = LinearLayoutManager(mContext)
         rcv_button.addItemDecoration(DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL))
         adapter.data = btnList
+
+        spinner_test.attachDataSource(btnList)
 
         initEvent()
         getPermission()
@@ -164,20 +187,57 @@ class TestKtActivity : BaseActivity() {
                 "OpenGLActivity" -> {
                     OpenGLActivity.start(mContext)
                 }
-                "MQTT" -> {
-                    MQTTActivity.start(mContext)
-                }
-                "DoubleScreen" ->{
+                "DoubleScreen" -> {
 //                    val i = packageManager.getLaunchIntentForPackage("com.easyway.testsecondscreen")
 //                    startActivity(i)
                     TestDoubleScreenActivity.start(mContext)
                 }
-                "TestUpdate" ->{
+                "TestUpdate" -> {
                     LiveEventBus.get<String>("attributes")
                         .postAcrossApp("hahaha")
-                    RxTools.openApp(pkgName, pkgNameClass)
-
+//                    RxTools.openApp(pkgName, pkgNameClass)
                     LogUtils.e("向辅助app发送消息")
+
+                    var intent =
+                        packageManager.getLaunchIntentForPackage(
+                            pkgName
+                        )
+                    if (intent != null) {
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        LogUtils.e("startActivity," + intent.toString())
+                    }
+
+                    exitProcess(0)
+                }
+                "dispatchEvent" -> {
+                    DispatchEventActivity.start(mContext)
+                }
+                "scope" -> {
+                    //作用域
+                    ScopeActivity.start(mContext)
+                }
+                "xiaodaoda" -> {
+                    var list = test(intArrayOf(100, 102, 99, 110, 80), 1)
+                    var sb = StringBuffer()
+                    for (i in list) {
+                        sb.append(i)
+                        sb.append(";")
+                    }
+                    tv_text.text = sb.toString()
+
+                }
+                "dadaoxiao" -> {
+                    var list = test(intArrayOf(100, 102, 99, 110, 80), 2)
+                    var sb = StringBuffer()
+                    for (i in list) {
+                        sb.append(i)
+                        sb.append(";")
+                    }
+                    tv_text.text = sb.toString()
+                }
+                "TestRxjava" -> {
+                    TestRxjava.start(mContext)
                 }
             }
         }
@@ -211,4 +271,78 @@ class TestKtActivity : BaseActivity() {
             content.startActivity(intent)
         }
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        LogUtils.e("onCreate")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        LogUtils.e("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LogUtils.e("onResume")
+    }
+
+    override fun onPause() {
+        LogUtils.e("onPause")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        LogUtils.e("onStop")
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        LogUtils.e("onDestroy")
+        super.onDestroy()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LogUtils.e("onConfigurationChanged")
+    }
+
+
+    //type=2 从大到小，1从小到大
+    private fun test(list: IntArray, type: Int): IntArray {
+        var temp: Int
+
+        //判断size
+        if (list.size < 2) {
+            return list
+        }
+
+        if (type == 1) {
+            for (i in list.indices) {
+                for (j in 0 until list.size - i - 1) {
+                    if (list[j] > list[j + 1]) {
+                        temp = list[j + 1]
+                        list[j + 1] = list[j]
+                        list[j] = temp
+                    }
+                }
+            }
+            return list
+        }
+
+        if (type == 2) {
+            for (i in list.indices) {
+                for (j in 0 until list.size - i - 1) {
+                    if (list[j] < list[j + 1]) {
+                        temp = list[j + 1]
+                        list[j + 1] = list[j]
+                        list[j] = temp
+                    }
+                }
+            }
+            return list
+        }
+        return list
+    }
+
 }
