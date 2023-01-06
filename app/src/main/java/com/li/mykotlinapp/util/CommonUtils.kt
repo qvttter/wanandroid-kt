@@ -2,15 +2,12 @@ package com.li.mykotlinapp.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Point
 import android.net.ConnectivityManager
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.*
-import com.li.mykotlinapp.view.activity.TestKtActivity
-import java.lang.Exception
-import java.lang.StringBuilder
 import java.lang.reflect.ParameterizedType
 
 /************************************************************************
@@ -138,6 +135,5 @@ class CommonUtils {
             val info = manager.activeNetworkInfo
             return !(null == info || !info.isAvailable)
         }
-
     }
 }

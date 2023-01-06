@@ -19,6 +19,7 @@ import com.li.mykotlinapp.test.*
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.apkfuns.logutils.LogUtils
+import com.google.gson.Gson
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
@@ -50,19 +51,20 @@ class TestKtActivity : BaseActivity() {
     }
 
     override fun initData() {
-        flow {
-            for (i in 60 downTo 0) {
-                emit(i)
-                delay(1000)
-            }
-        }
-            .flowOn(Dispatchers.Default)
-            .onCompletion { tv_text.append("倒计时结束\n") }
-            .onEach{tv_text.append( "倒计时:${it}s\n")}
-            .flowOn(Dispatchers.Main)
-            .launchIn(lifecycleScope)
+//        flow {
+//            for (i in 60 downTo 0) {
+//                emit(i)
+//                delay(1000)
+//            }
+//        }
+//            .flowOn(Dispatchers.Default)
+//            .onCompletion { tv_text.append("倒计时结束\n") }
+//            .onEach{tv_text.append( "倒计时:${it}s\n")}
+//            .flowOn(Dispatchers.Main)
+//            .launchIn(lifecycleScope)
 
         btnList = ArrayList()
+        btnList.add("ABTQR")
         btnList.add("objectBox")
         btnList.add("excel")
         btnList.add("scan")
@@ -82,6 +84,11 @@ class TestKtActivity : BaseActivity() {
         btnList.add("xiaodaoda")
         btnList.add("dadaoxiao")
         btnList.add("TestRxjava")
+        btnList.add("TestRecyclerActivity")
+
+        var list = Gson().toJson(btnList)
+        LogUtils.e("list:$list")
+
 
         adapter = TestButtonListAdapter(btnList)
         rcv_button.adapter = adapter
@@ -134,6 +141,9 @@ class TestKtActivity : BaseActivity() {
         adapter.setOnItemClickListener { adapter, view, position ->
             val bean = adapter.getItem(position) as String
             when (bean) {
+                "ABTQR" -> {
+                    QRGenerateNewActivity.start(mContext)
+                }
                 "objectBox" -> {
                     ObjectActivity.start(mContext)
                 }
@@ -238,6 +248,9 @@ class TestKtActivity : BaseActivity() {
                 }
                 "TestRxjava" -> {
                     TestRxjava.start(mContext)
+                }
+                "TestRecyclerActivity" ->{
+                    TestRecyclerActivity.start(mContext)
                 }
             }
         }

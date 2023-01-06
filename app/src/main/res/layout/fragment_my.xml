@@ -56,6 +56,16 @@
         style="@style/my_item"
         android:text="分享项目" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_test"
+        style="@style/my_item"
+        android:text="测试页" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

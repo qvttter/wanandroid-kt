@@ -6,8 +6,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.ailiwean.core.helper.QRCodeEncoder
 import com.apkfuns.logutils.LogUtils
+import com.ewivt.redline.abtqr.ABTQrCodeDataSecurity
+import com.ewivt.redline.abtqr.data.ABTQrCodeData
+import com.ewivt.redline.basecode.Base64
 import com.ewivt.redline.datasecurity.DataSignature
-import com.ewivt.redline.keymanagement.KeySecurity
+import com.ewivt.redline.kmsutils.QrImageUtil
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.util.DensityUtil
@@ -15,6 +18,7 @@ import com.li.mykotlinapp.util.RxUtil
 import com.li.mykotlinapp.util.TimeUtils
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_qr_generate.*
+
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -40,10 +44,17 @@ class QRGenerateActivity : BaseActivity() {
 
     override fun initData() {
         spinner_key.attachDataSource(keyNameList)
+        et_yyyymmddHHMMSSmmm.setText(TimeUtils.getTimeGMTNow() + "000")
+
         btn_fast_input_time.setOnClickListener {
 //            20220309202000000
             et_yyyymmddHHMMSSmmm.setText(TimeUtils.getTimeGMTNow() + "000")
         }
+
+        btn_create_qr_new.setOnClickListener {
+            createQR()
+        }
+
 
         btn_create_qr.setOnClickListener {
             var yyyymmddHHMMSSmmm = et_yyyymmddHHMMSSmmm.text.toString()
@@ -87,11 +98,73 @@ class QRGenerateActivity : BaseActivity() {
                     iv_qr.setImageBitmap(it)
                 }
                 ) {
-                    shortToast("生成二维码出错," + it.message)
                     LogUtils.e("生成二维码出错," + it.message)
                 }
         }
     }
+
+    private fun createQR(){
+        var qrCodeData = ABTQrCodeData()
+        qrCodeData.operatorCode = "022"
+        qrCodeData.publicKeyVersion = "1"
+        qrCodeData.inspectionReferenceVersion = "1234"
+        qrCodeData.validation24datetime = "20221111202456789"
+        qrCodeData.longitude = "034333333"
+        qrCodeData.latitude = "035333333"
+        qrCodeData.tripAccessPointType = "1"
+        qrCodeData.tripAccessPointStationNumber = "12345678"
+        qrCodeData.passengerAcountNumber = "99999999999999999999"
+        qrCodeData.smartIdentifierType = "1"
+        qrCodeData.passengerLanguage = "1"
+        qrCodeData.travelFareCode = "201"
+        qrCodeData.passengerNumber = "2"
+        qrCodeData.passengerFirstProfile = "00"
+        qrCodeData.passengerSecondProfile = "33"
+        qrCodeData.signData = "000000000000000000"
+        val dd: Map<Int, String> = ABTQrCodeDataSecurity.generatorKey()
+        val privateKeys = HashMap<String, String?>()
+        val publicKeys = HashMap<String, String?>()
+        privateKeys["1"] = dd[1]
+        publicKeys["1"] = dd[0]
+
+//        privateKeys.put("1",PrivateKey);
+//        publicKeys.put("1", PublicKey);
+
+
+//        privateKeys.put("1",PrivateKey);
+//        publicKeys.put("1", PublicKey);
+        val abtQrCodeDataSecurity = ABTQrCodeDataSecurity(privateKeys, publicKeys)
+        for (i in 0..0) {
+            val qrData: String = abtQrCodeDataSecurity.encryptQrData(qrCodeData)
+            Observable.just(
+                QRCodeEncoder.syncEncodeQRCode(
+                    qrData,
+                    DensityUtil.dip2px(mContext, 200f)
+                )
+            )
+                .compose(RxUtil.trans_io_main())
+                .subscribe({
+                    iv_qr.setImageBitmap(it)
+                }
+                ) {
+                    LogUtils.e("生成二维码出错," + it.message)
+                }
+
+//            LogUtils.e("qrData=$qrData;length="+qrData.length)
+            val data: ByteArray = Base64.decodeBase64(qrData)
+//            LogUtils.e("qrData parse data length :" + data.size)
+//            val bufferedImage = QrImageUtil.generateABTQRCodeImage(data, 350, 350)
+
+//            if (bufferedImage != null) {
+//                val output = File("d:\\abtqr_code_write_" + System.currentTimeMillis() + ".png")
+//                ImageIO.write(bufferedImage, "png", output)
+//            } else {
+//            }
+//            val sqrData: ABTQrCodeData = abtQrCodeDataSecurity.decryptByPubKey(qrData)
+//            log.debug("sqrData=$sqrData")
+        }
+    }
+
 
     private fun hideSoftInput(context: Context, view: View) {
         val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

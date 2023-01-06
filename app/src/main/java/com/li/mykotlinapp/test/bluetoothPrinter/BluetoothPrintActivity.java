@@ -250,7 +250,7 @@ public class BluetoothPrintActivity extends BaseActivity {
     private void connect() {
         showLoading("连接中，请稍后。");
         bluetoothConnect =
-                new BluetoothConnect(BluetoothAdapter.getDefaultAdapter(), "00:15:83:93:B3:69");
+                new BluetoothConnect(BluetoothAdapter.getDefaultAdapter(), "04:7F:0E:56:58:FA");
         bluetoothConnect.DecodeType("GB18030");
         boolean isConnect = true;
         try {
@@ -398,6 +398,7 @@ public class BluetoothPrintActivity extends BaseActivity {
     private void printLabel() {
         try {
             printer.labelConfig().setPrintDirection(PrinterDirection.Normal);
+
             ILabelEdit labelEdit = printer.labelEdit();
             labelEdit.setColumn(1, 0);
             labelEdit.setLabelSize(600, 960);
@@ -507,8 +508,8 @@ public class BluetoothPrintActivity extends BaseActivity {
                 if (btDevice.getName() == null) {
                     return;
                 }
-                if (btDevice.getName().contains("BTP-P32") && btDevice.getAddress().equals("00:15:83:93:B3:69")) {
-                    LogUtils.e("找到了BTP-P32 00:15:83:93:B3:69");
+                if (btDevice.getName().contains("BTP-P32") && btDevice.getAddress().equals("04:7F:0E:56:58:FA")) {
+                    LogUtils.e("找到了BTP-P32 04:7F:0E:56:58:FA");
                     if (btDevice.getBondState() == BluetoothDevice.BOND_NONE) {
                         try {
                             //通过工具类ClsUtils,调用createBond方法

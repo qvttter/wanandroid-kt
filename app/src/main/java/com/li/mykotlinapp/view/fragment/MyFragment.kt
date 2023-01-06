@@ -47,11 +47,6 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
             true
         }
 
-        binding.btnLogout.setOnLongClickListener {
-            TestKtActivity.start(mContext)
-            true
-        }
-
         binding.tvName.setOnClickListener {
             val loginDialog = LoginDialog.newInstance()
             loginDialog.setListener(object : LoginDialog.OnLoginListener {
@@ -79,6 +74,11 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
                 }
             }
         }
+
+        binding.tvTest.setOnClickListener {
+            TestKtActivity.start(mContext)
+        }
+
     }
 
     private fun logout(){

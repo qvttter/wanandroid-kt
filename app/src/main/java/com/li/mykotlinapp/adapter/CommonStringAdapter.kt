@@ -18,4 +18,5 @@ class CommonStringAdapter(@Nullable data: List<UserDbBean>) : BaseQuickAdapter<U
     override fun convert(holder: BaseViewHolder, item: UserDbBean) {
         holder.setText(R.id.tv_common,if (item==null) "" else item.age.toString()+item.name+item.number.toString() )
     }
+
 }
