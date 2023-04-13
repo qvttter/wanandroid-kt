@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_qr_generate.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/2/15
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class QRGenerateActivity : BaseActivity() {
     private var keyList = listOf(

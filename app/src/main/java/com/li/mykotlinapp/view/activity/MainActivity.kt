@@ -19,7 +19,6 @@ class MainActivity : BaseActivity() {
     override fun getLayout(): Int {
         return R.layout.activity_main
     }
-
     override fun initData() {
         getPermission()
         FloatTool.RequestOverlayPermission(this)

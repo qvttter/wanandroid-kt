@@ -9,7 +9,7 @@ import android.widget.Toast
  * @Descriptions:
  * @Author: zhouli
  * @Date: 2018/10/8
- * @Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ * @Copyright:(C)2018 . All rights reserved.
  */
 object ToastUtil {
     //    public static void toastPicture(Context context, int id) {

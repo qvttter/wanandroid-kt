@@ -12,7 +12,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.li.mykotlinapp"
-        minSdkVersion 28
+        minSdkVersion 27
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -93,6 +93,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0-alpha01'
     implementation 'androidx.appcompat:appcompat:1.4.0-alpha03'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.mlkit:barcode-scanning-common:+'
+    implementation 'androidx.camera:camera-core:1.0.0'
+    implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:16.2.0'
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
     implementation("androidx.core:core-ktx:1.6.0")
@@ -132,8 +135,8 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
     implementation "androidx.room:room-guava:$rootProject.roomVersion"
     //携程
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     //lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
@@ -172,6 +175,9 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
     implementation 'org.bouncycastle:bcprov-jdk16:1.46'
+
+    implementation 'com.github.jenly1314:zxing-lite:2.1.1'
+
 
 }
 

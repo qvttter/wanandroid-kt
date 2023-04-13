@@ -16,7 +16,7 @@ import android.view.View;
  *@Author: zhouli
  *@Date: 2020/8/26
  *@version: 4.8.9
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 @SuppressWarnings("unused")
 public class ShadowView extends View {

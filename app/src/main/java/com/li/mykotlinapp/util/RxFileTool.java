@@ -8,7 +8,7 @@ import java.io.File;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/3/17
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 public class RxFileTool {
     public static File getFileByPath(String filePath) {

@@ -13,7 +13,7 @@ import androidx.core.widget.NestedScrollView;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/11/8
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 public class MyNestedScrollView extends NestedScrollView {
     private int downX;

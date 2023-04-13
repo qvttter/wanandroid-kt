@@ -37,7 +37,7 @@ import kotlinx.coroutines.launch
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/11/5
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class IndexFragment :
     BaseVMFragment<IndexFragmentVM, FragmentIndexBinding>(R.layout.fragment_index) {
@@ -105,6 +105,7 @@ class IndexFragment :
     }
 
     private fun getData(isLoadMore: Boolean) {
+
         mViewModel.getMainBanner()
         getMainArticleList(isLoadMore)
     }

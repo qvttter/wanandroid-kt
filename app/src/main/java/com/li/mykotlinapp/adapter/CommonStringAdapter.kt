@@ -12,7 +12,6 @@ import com.li.mykotlinapp.bean.db.UserDbBean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/7/10
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class CommonStringAdapter(@Nullable data: List<UserDbBean>) : BaseQuickAdapter<UserDbBean, BaseViewHolder>(R.layout.item_common_string){
     override fun convert(holder: BaseViewHolder, item: UserDbBean) {

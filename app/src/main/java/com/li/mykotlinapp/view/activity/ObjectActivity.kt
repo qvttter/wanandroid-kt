@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_object_box.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/7/9
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 class ObjectActivity : BaseVMActivity<ObjectVM, ActivityObjectBoxBinding>() {
     private lateinit var adapter: CommonStringAdapter

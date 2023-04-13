@@ -13,7 +13,7 @@ import com.li.mykotlinapp.view.vm.JavVM
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/26
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class NoMosaicMovieFragment : BaseVMFragment<JavVM, FragmentNoMosaicBinding>(R.layout.fragment_no_mosaic) {
 

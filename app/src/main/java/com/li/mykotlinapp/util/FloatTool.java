@@ -15,7 +15,7 @@ import androidx.appcompat.app.AlertDialog;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/6/2
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 public class FloatTool {
     public static boolean CanShowFloat = false;

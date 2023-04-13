@@ -28,7 +28,7 @@ import com.li.mykotlinapp.service.MultiScreenService.MultiScreenBinder
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/12/13
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 class TestDoubleScreenActivity : BaseActivity() {
     private lateinit var presentation: SecondScreenPresentation

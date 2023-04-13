@@ -14,7 +14,7 @@ import com.li.mykotlinapp.R
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/8/25
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 class EMVPhoneView (context: Context, attrs: AttributeSet?) : View(context, attrs) {
     private var paint = Paint(Paint.ANTI_ALIAS_FLAG)

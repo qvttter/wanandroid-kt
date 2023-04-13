@@ -24,7 +24,7 @@ import com.zyao89.view.zloading.Z_TYPE
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020-03-12
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 abstract class BaseVMFragment<VM : BaseViewModel, T : ViewBinding>(@LayoutRes val layoutId: Int) :
     Fragment(layoutId) {

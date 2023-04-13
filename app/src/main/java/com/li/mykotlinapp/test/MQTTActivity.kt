@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_mqtt.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/5/13
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class MQTTActivity: BaseActivity() ,IGetMessageCallBack {
     private lateinit var mqttService: MQTTService

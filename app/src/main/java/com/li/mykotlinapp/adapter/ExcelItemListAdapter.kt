@@ -12,7 +12,6 @@ import com.li.mykotlinapp.bean.ExcelItemBean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/10/20
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class ExcelItemListAdapter(@Nullable data: List<ExcelItemBean>) :
     BaseQuickAdapter<ExcelItemBean, BaseViewHolder>(R.layout.item_excel_title) {

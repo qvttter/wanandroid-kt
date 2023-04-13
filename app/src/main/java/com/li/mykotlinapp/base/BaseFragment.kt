@@ -16,7 +16,7 @@ import com.li.mykotlinapp.util.ToastUtil
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/18
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 abstract class BaseFragment<T : ViewBinding>(@LayoutRes val layoutId: Int) : Fragment(layoutId) {
     protected lateinit var mContext: Context

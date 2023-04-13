@@ -6,7 +6,7 @@ package com.li.mykotlinapp.bean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/5/13
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 data class MQTTBean (
     var method:String,

@@ -6,7 +6,7 @@ package com.li.mykotlinapp.bean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/29
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 data class LoginResponse(
     val admin: Boolean,

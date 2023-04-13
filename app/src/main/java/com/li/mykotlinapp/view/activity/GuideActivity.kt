@@ -15,7 +15,7 @@ import com.li.mykotlinapp.widget.ZoomOutPageTransformer
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/18
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class GuideActivity : BaseActivity() {
 

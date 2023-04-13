@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/9/23
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 class LoginDialog : BaseVMDialog<MyViewModel, DialogLoginBinding>(R.layout.dialog_login) {
     private var listener:OnLoginListener?=null

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.include_toolbar.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 3/4/21
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 class ScanActivity : BaseActivity() {
     override fun getLayout(): Int {

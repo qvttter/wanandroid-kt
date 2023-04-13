@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flowOn
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/23
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class HttpBiz private constructor() : BaseBiz() {
     companion object {
@@ -30,6 +30,13 @@ class HttpBiz private constructor() : BaseBiz() {
     }
 
     private var service: Service = retrofit.create(Service::class.java)
+
+    suspend fun test(): Flow<CommonResult<String>> {
+        return flow {
+            var infoModel = service.test("https://tieba.baidu.com/hottopic/browse/topicList")
+            emit(CommonResult.Success(infoModel.string()?:""))
+        }.flowOn(Dispatchers.IO)
+    }
 
     suspend fun getMainBanner(): Flow<CommonResult<List<BannerBean>>> {
         return flow {

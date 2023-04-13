@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.dialog_excel.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/10/20
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 class ExcelDialog :BaseDialog() {
     private var listener:OnCompleteListener?=null

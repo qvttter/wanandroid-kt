@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_test_recycler.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/11/8
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class TestRecyclerActivity :BaseActivity(){
     private lateinit var list:MutableList<String>

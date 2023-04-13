@@ -9,7 +9,7 @@ import com.li.mykotlinapp.base.BaseViewModel
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/7/9
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 class LoginViewModel : BaseViewModel(){
 

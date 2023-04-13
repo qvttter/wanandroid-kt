@@ -15,7 +15,7 @@ import com.li.mykotlinapp.databinding.FragmentHomeBinding
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/9/24
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding

@@ -17,7 +17,7 @@ import com.li.mykotlinapp.view.activity.SecondScreenPresentation;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/12/15
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 public class MultiScreenService extends Service {
     /**  屏幕管理器 **/

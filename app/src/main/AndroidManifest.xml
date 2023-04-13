@@ -59,10 +59,10 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
         </activity>
 
         <activity
@@ -70,10 +70,10 @@
             android:exported="true"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".test.QRGenerateNewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity
@@ -130,6 +130,7 @@
         <activity android:name=".view.activity.TestRxjava" />
         <activity android:name=".test.TestXDCardFunctionActivity" />
         <activity android:name=".view.activity.TestRecyclerActivity" />
+        <activity android:name=".test.TestScanLiteActivity" />
 
 
         <!--        <service android:name=".service.MultiScreenService" />-->

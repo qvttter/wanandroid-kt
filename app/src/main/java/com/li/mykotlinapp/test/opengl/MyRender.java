@@ -16,7 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/5/7
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 public class MyRender implements GLSurfaceView.Renderer{
     private FloatBuffer vertexBuffer;

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/9/30
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class LoginActivity : BaseActivity() {
     override fun getLayout(): Int {

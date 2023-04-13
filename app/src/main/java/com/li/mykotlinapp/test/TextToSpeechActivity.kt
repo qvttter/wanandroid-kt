@@ -15,7 +15,7 @@ import java.util.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/6
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class TextToSpeechActivity : BaseActivity() {
     private lateinit var tts: TextToSpeech
@@ -35,21 +35,32 @@ class TextToSpeechActivity : BaseActivity() {
                 var result = tts.setLanguage(Locale.JAPAN)
                 if (result != TextToSpeech.LANG_AVAILABLE) {
                     shortToast("暂时不支持这种语言的朗读")
+                }else{
+                    tv_current_language.text ="当前语言：日语"
                 }
             }
         })
         btn_text1.setOnClickListener {
-            et_text.setText("こんにちは。")
+            var result = tts.setLanguage(Locale.JAPAN)
+            if (result != TextToSpeech.LANG_AVAILABLE) {
+                shortToast("暂时不支持这种语言的朗读")
+            }
+            et_text.setText("今日はいい天気ですね。")
         }
         btn_text2.setOnClickListener {
-            et_text.setText("我が家へようこそ。")
+            var result = tts.setLanguage(Locale.ENGLISH)
+            if (result != TextToSpeech.LANG_AVAILABLE) {
+                shortToast("暂时不支持这种语言的朗读")
+            }
+            et_text.setText("The weather today is really nice")
 
         }
         btn_text3.setOnClickListener {
-            et_text.setText("良い1日を。")
-        }
-        btn_text4.setOnClickListener {
-            et_text.setText("ドアを閉じてください")
+            var result = tts.setLanguage(Locale.TRADITIONAL_CHINESE)
+            if (result != TextToSpeech.LANG_AVAILABLE) {
+                shortToast("暂时不支持这种语言的朗读")
+            }
+            et_text.setText("今天的天氣真不錯")
         }
 
         btn_play.setOnClickListener {

@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/19 
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved. 
+  
  *************************************************************************/
 public class TestJavaActivity extends BaseActivity {
     public static final String BASE_URL = "http://www.wanandroid.com/";

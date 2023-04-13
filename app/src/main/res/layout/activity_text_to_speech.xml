@@ -10,25 +10,25 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/btn_text1"
-            android:text="text1"
+            android:text="jp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/btn_text2"
-            android:text="text2"
+            android:text="en"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/btn_text3"
-            android:text="text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btn_text4"
-            android:text="text4"
+            android:text="繁体"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_current_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/et_text"

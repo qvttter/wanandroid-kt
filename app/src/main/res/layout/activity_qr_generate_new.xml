@@ -5,220 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="时间(yyyymmddHHMMSSmmm)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_yyyymmddHHMMSSmmm"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_black_stroke"
-            android:hint="yyyymmddHHMMSSmmm"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="operatorCode(3位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:text="022"
-            android:id="@+id/et_operator_code"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="stationCode(5位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:text="00001"
-            android:id="@+id/et_station_code"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:hint="00001"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FareCode(3位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_fare_code"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:hint="FareCode"
-            android:text="021"
-            android:inputType="number"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="旅客数量(1位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_traveler_num"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:hint="旅客数量"
-            android:text="1"
-            android:inputType="number"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="profile1(2位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_profile1"
-            android:layout_width="60dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:text="01"
-            android:inputType="number"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="profile2(2位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_profile2"
-            android:layout_width="60dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:text="03"
-            android:inputType="number"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="signData(18位)"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/et_sign_data"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/shape_black_stroke"
-            android:text="000000000000000000"
-            android:inputType="number"
-            android:maxEms="101"
-            android:padding="4dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/colorDarkGray" />
-
-<!--    <org.angmarch.views.NiceSpinner-->
-<!--        android:id="@+id/spinner_key"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="12dp" />-->
-
     <Button
         android:id="@+id/btn_create_qr"
         android:layout_width="150dp"
@@ -227,11 +13,565 @@
         android:layout_marginTop="4dp"
         android:text="生成二维码" />
 
-    <ImageView
-        android:id="@+id/iv_qr"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="publicKeyVersion(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_public_key_version"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="0"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="时间(yyyymmddHHMMSSmmm)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_yyyymmddHHMMSSmmm"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:hint="yyyymmddHHMMSSmmm"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="inspectionReferenceVersion(4位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_inspection_reference_version"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="0023"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="longitude(9位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_longitude"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="034983092"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="latitude(9位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_latitude"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="032805341"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="tripAccessPointType(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_tripAccess_point_type"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="5"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="tripAccessPointStationNumber(8位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_trip_access_point_station_number"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="00035962"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="passengerAcountNumber(20位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_passenger_account_number"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="30123246947085109132"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="smartIdentifierType(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_smart_identifier_type"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="2"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="passengerLanguage(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_passenger_language"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="validationModelDepature(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_validation_model_depature"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="validationModelDestination(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_validation_model_destination"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="operatorCode(3位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_operator_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="200"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="stationCode(5位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_station_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:hint="00001"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="00001"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FareCode(3位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_fare_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:hint="FareCode"
+                    android:inputType="number"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="021"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="passengerNumber(1位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_traveler_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:hint="旅客数量"
+                    android:inputType="number"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="profile1(2位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_profile1"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:inputType="number"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="01"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="profile2(2位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_profile2"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:inputType="number"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text="03"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="signData(18位)"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_sign_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_black_stroke"
+                    android:inputType="number"
+                    android:maxEms="101"
+                    android:padding="4dp"
+                    android:text=""
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorDarkGray" />
+
+    <!--    <org.angmarch.views.NiceSpinner-->
+    <!--        android:id="@+id/spinner_key"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="12dp" />-->
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_create_qr"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:text="生成二维码" />-->
+
+        <ImageView
+            android:id="@+id/iv_qr"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
 
 </LinearLayout>

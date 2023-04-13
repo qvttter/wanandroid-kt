@@ -18,7 +18,7 @@ import java.security.Security
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/8
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class App : Application() {
     init {

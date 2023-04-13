@@ -18,7 +18,7 @@ import com.li.mykotlinapp.util.RxLocationTool
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/1
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class LocationService: Service() {
     private lateinit var mContext:Context

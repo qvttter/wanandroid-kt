@@ -14,7 +14,6 @@ import com.li.mykotlinapp.util.TimeUtil
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/11/7
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class IndexArticleAdapter(@Nullable data: MutableList<ArticleBean>) :
     BaseQuickAdapter<ArticleBean, BaseViewHolder>(R.layout.item_index_article, data),

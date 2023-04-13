@@ -13,7 +13,7 @@ import com.li.mykotlinapp.bean.UserBean
  *@Descriptions: Kotlin 作用域函数之let、with、run、also、apply
  *@Author: zhouli
  *@Date: 2022/7/1
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class ScopeActivity : BaseActivity() {
 

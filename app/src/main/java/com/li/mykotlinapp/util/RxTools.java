@@ -20,7 +20,7 @@ import java.util.Locale;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/1/6
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 public class RxTools {
     public static boolean installAppSilent(Context context,String filePath) {

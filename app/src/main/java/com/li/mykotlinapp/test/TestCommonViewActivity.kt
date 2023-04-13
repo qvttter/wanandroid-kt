@@ -12,7 +12,7 @@ import com.li.mykotlinapp.base.BaseActivity
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/11/3
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 class TestCommonViewActivity : BaseActivity() {
     override fun getLayout(): Int {

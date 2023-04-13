@@ -12,7 +12,6 @@ import com.li.mykotlinapp.bean.TestButtonBean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/1/10
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class TestButtonListAdapter(@Nullable data: MutableList<String>) :
     BaseQuickAdapter<String, BaseViewHolder>(

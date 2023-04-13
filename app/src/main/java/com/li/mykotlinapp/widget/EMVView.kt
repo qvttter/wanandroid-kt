@@ -11,7 +11,7 @@ import android.widget.LinearLayout
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2020/8/25
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 class EMVView (context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs){
     private var phoneView = EMVPhoneView(context,attrs)

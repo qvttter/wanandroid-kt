@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home_tab.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/25
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class JavHomeTabFragment : BaseFragment<FragmentJavTabBinding>(R.layout.fragment_jav_tab) {
 

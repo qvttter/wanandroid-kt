@@ -13,7 +13,7 @@ import com.li.mykotlinapp.view.vm.TestRxJavaVM
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/8/12
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 class TestRxjava :BaseVMActivity<TestRxJavaVM,ActivityTestRxjavaBinding>() {
 

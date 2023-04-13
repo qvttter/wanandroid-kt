@@ -6,6 +6,7 @@ import com.li.mykotlinapp.base.BaseResponse
 import com.li.mykotlinapp.bean.ArticleBean
 import com.li.mykotlinapp.bean.BannerBean
 import com.li.mykotlinapp.bean.LoginResponse
+import okhttp3.ResponseBody
 import retrofit2.http.*
 
 /************************************************************************
@@ -14,9 +15,12 @@ import retrofit2.http.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/22
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 interface Service {
+    @GET
+    suspend fun test(@Url url:String): ResponseBody
+
     @GET("banner/json")
     suspend fun getMainBanner(): BaseListResponse<BannerBean>
 

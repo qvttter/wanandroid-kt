@@ -21,7 +21,6 @@ import kotlinx.coroutines.launch
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/28
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class JavMyMosaicMovieActivity : BaseVMActivity<JavVM, ActivityJavMyMosaicMovieBinding>() {
     private lateinit var adapter: CommonMovieAdapter

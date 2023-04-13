@@ -13,7 +13,7 @@ import java.util.TimeZone;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/6/3
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 public class TimeUtils {
     //形如20210521080000这样格式的时间转换成正常时间

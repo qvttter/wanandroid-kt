@@ -14,7 +14,7 @@ import com.li.mykotlinapp.base.BaseActivity
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/19
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 //QRCodeView.Delegate
 class BGAQRCodeActivity : BaseActivity() {

@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/19 
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved. 
+  
  *************************************************************************/
 public class ZoomOutPageTransformer implements ViewPager.PageTransformer{
     private static final float MIN_SCALE = 0.9f;

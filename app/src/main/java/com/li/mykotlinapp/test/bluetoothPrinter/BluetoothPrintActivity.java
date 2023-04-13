@@ -50,7 +50,7 @@ import io.reactivex.Observable;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/3/10
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 public class BluetoothPrintActivity extends BaseActivity {
     public static int port_type = 0;

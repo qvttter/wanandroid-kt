@@ -12,7 +12,6 @@ import com.li.mykotlinapp.bean.ExcelFileBean
  *@Descriptions: ExcelFileBean
  *@Author: zhouli
  *@Date: 2020/10/20
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class ExcelFileAdapter (@Nullable data: List<ExcelFileBean>) : BaseQuickAdapter<ExcelFileBean, BaseViewHolder>(R.layout.item_excel_file) {
     override fun convert(helper: BaseViewHolder, item: ExcelFileBean) {

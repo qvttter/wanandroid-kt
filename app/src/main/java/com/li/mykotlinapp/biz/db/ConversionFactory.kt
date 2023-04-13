@@ -11,7 +11,7 @@ import java.sql.Date
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/12/6
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+ 
  *************************************************************************/
 class ConversionFactory {
     @TypeConverter

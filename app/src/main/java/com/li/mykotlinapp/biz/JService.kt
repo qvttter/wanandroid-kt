@@ -17,7 +17,7 @@ import retrofit2.http.*
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/25
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2022 . All rights reserved.
  *************************************************************************/
 interface JService {
     @GET("/forum/member.php?mod=logging&action=login&referer=%2F%2Fwww.seejav.co%2F")

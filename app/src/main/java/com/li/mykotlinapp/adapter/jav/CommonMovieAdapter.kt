@@ -15,7 +15,6 @@ import com.li.mykotlinapp.bean.jav.JavItemBean
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2022/4/26
- *@Copyright:(C)2022 苏州易程创新科技有限公司. All rights reserved.
  *************************************************************************/
 class CommonMovieAdapter(@Nullable data: MutableList<JavItemBean>) : BaseQuickAdapter<JavItemBean, BaseViewHolder>(R.layout.item_jav_movie, data) {
 

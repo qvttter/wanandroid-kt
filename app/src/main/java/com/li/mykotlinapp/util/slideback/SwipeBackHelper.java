@@ -32,7 +32,7 @@ import java.lang.reflect.Proxy;
  *@Author: zhouli
  *@Date: 2020/8/26
  *@version: 4.8.9
- *@Copyright:(C)2020 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2020 . All rights reserved.
  *************************************************************************/
 @SuppressWarnings({"unused", "WeakerAccess", "PrivateApi", "JavaReflectionMemberAccess", "JavaReflectionInvocation", "BooleanMethodIsAlwaysInverted", "FieldCanBeLocal"})
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)

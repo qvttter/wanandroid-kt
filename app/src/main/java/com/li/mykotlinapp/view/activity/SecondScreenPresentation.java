@@ -14,7 +14,7 @@ import com.li.mykotlinapp.R;
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2021/12/14
- *@Copyright:(C)2021 苏州易程创新科技有限公司. All rights reserved.
+ *@Copyright:(C)2021 . All rights reserved.
  *************************************************************************/
 public class SecondScreenPresentation extends Presentation {
     private TextView tvSecond;

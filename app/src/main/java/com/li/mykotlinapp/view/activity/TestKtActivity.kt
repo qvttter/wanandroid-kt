@@ -1,16 +1,20 @@
 package com.li.mykotlinapp.view.activity
 
 import android.Manifest
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.res.Configuration
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.Settings
 import android.view.animation.AnimationUtils
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.apkfuns.logutils.LogUtils
 import com.gengqiquan.result.startActivityWithResult
+import com.google.gson.Gson
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.li.mykotlinapp.R
 import com.li.mykotlinapp.adapter.TestButtonListAdapter
@@ -18,17 +22,14 @@ import com.li.mykotlinapp.base.BaseActivity
 import com.li.mykotlinapp.test.*
 import com.li.mykotlinapp.test.bluetoothPrinter.BluetoothPrintActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
-import com.apkfuns.logutils.LogUtils
-import com.google.gson.Gson
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
+
 
 /************************************************************************
  *@Project: MyKotlinApp
@@ -36,7 +37,7 @@ import kotlin.system.exitProcess
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/11/5
- *@Copyright:(C)2018 苏州易程创新科技有限公司. All rights reserved.
+
  *************************************************************************/
 class TestKtActivity : BaseActivity() {
     private val pkgName = "com.ewivt.p92.upgradeguardianapp"
@@ -45,6 +46,9 @@ class TestKtActivity : BaseActivity() {
     lateinit var adapter: TestButtonListAdapter
     lateinit var btnList: MutableList<String>
     private var job: Job? = null
+
+    var a: Any? = null
+    lateinit var list: MutableList<String>
 
     override fun getLayout(): Int {
         return R.layout.activity_test
@@ -62,6 +66,33 @@ class TestKtActivity : BaseActivity() {
 //            .onEach{tv_text.append( "倒计时:${it}s\n")}
 //            .flowOn(Dispatchers.Main)
 //            .launchIn(lifecycleScope)
+
+        when (a) {
+            null -> {
+                LogUtils.e("a is null ")
+            }
+            is String -> {
+                LogUtils.e("a is string ")
+
+            }
+            "3" -> {
+                LogUtils.e("a is 3 ")
+            }
+        }
+
+        list = ArrayList()
+        list.add("abc")
+        list.add("efg")
+        list.add("123")
+        list.add("vvv")
+        list.add("qqq")
+
+        list.filter { it.startsWith("a") }
+            .sortedBy { it }
+
+
+
+
 
         btnList = ArrayList()
         btnList.add("ABTQR")
@@ -85,6 +116,7 @@ class TestKtActivity : BaseActivity() {
         btnList.add("dadaoxiao")
         btnList.add("TestRxjava")
         btnList.add("TestRecyclerActivity")
+        btnList.add("TestScanLiteActivity")
 
         var list = Gson().toJson(btnList)
         LogUtils.e("list:$list")
@@ -249,8 +281,12 @@ class TestKtActivity : BaseActivity() {
                 "TestRxjava" -> {
                     TestRxjava.start(mContext)
                 }
-                "TestRecyclerActivity" ->{
+                "TestRecyclerActivity" -> {
                     TestRecyclerActivity.start(mContext)
+                }
+                "TestScanLiteActivity" -> {
+                    TestScanLiteActivity.start(mContext)
+
                 }
             }
         }
