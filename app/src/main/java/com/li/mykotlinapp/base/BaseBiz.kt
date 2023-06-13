@@ -29,10 +29,10 @@ import java.util.concurrent.TimeUnit
  *@Descriptions:
  *@Author: zhouli
  *@Date: 2018/10/23
- 
+
  *************************************************************************/
 open class BaseBiz {
-    companion object{
+    companion object {
         private const val TAG = "RetrofitHelper"
         private const val CONTENT_PRE = "OkHttp: "
         private const val SAVE_USER_LOGIN_KEY = "user/login"
@@ -42,10 +42,16 @@ open class BaseBiz {
         private const val CONNECT_TIMEOUT = 30L
         private const val READ_TIMEOUT = 10L
     }
+
     var retrofit: Retrofit
     var mContext: Context
     var okHttpClient: OkHttpClient
-    private val cookieJar by lazy { PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.instance)) }
+    private val cookieJar by lazy {
+        PersistentCookieJar(
+            SetCookieCache(),
+            SharedPrefsCookiePersistor(App.instance)
+        )
+    }
 
 
     constructor() {
@@ -78,8 +84,8 @@ open class BaseBiz {
                 }
                 response
             }
-//            .addInterceptor(ResponseCookieInterceptor())
-//            .addInterceptor(SetResponseCookieInterceptor())
+            .addInterceptor(ResponseCookieInterceptor())
+            .addInterceptor(SetResponseCookieInterceptor())
             .build()
         okHttpClient.dispatcher().maxRequestsPerHost = 10
         retrofit = Retrofit.Builder()
@@ -100,11 +106,13 @@ open class BaseBiz {
             // set-cookie maybe has multi, login to save cookie
             if ((requestUrl.contains(SAVE_USER_LOGIN_KEY) || requestUrl.contains(
                     SAVE_USER_REGISTER_KEY
-                ))
-                && !response.headers(SET_COOKIE_KEY).isEmpty()) {
+                )) && response.headers(SET_COOKIE_KEY).isNotEmpty()
+            ) {
                 val cookies = response.headers(SET_COOKIE_KEY)
                 val cookie = CommonUtils.encodeCookie(cookies)
-                CommonUtils.Companion.saveCookie(requestUrl, domain, cookie)
+                LogUtils.e("requestUrl, domain, cookie:",requestUrl+";" +domain+";"+ cookie)
+//                CommonUtils.Companion.saveCookie(requestUrl, domain, cookie)
+                PrefUtil.domain = domain
             }
             return response
         }
@@ -118,8 +126,8 @@ open class BaseBiz {
             val domain = request.url().host()
             // get domain cookie
             if (domain.isNotEmpty()) {
-                val spDomain=PrefUtil.domain
-                val cookie: String = if (spDomain.isNotEmpty()) spDomain else ""
+                val spDomain = PrefUtil.domain
+                val cookie: String = spDomain.ifEmpty { "" }
                 if (cookie.isNotEmpty()) {
                     builder.addHeader(COOKIE_NAME, cookie)
                 }
@@ -172,7 +180,6 @@ open class BaseBiz {
             }
         }
     }
-
 
 
 }

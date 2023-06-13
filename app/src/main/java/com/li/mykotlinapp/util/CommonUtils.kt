@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import android.net.ConnectivityManager
 import android.os.Build
+import android.preference.Preference
 import android.util.DisplayMetrics
 import android.view.*
 import java.lang.reflect.ParameterizedType
@@ -33,14 +34,14 @@ class CommonUtils {
 
         @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
         fun saveCookie(url: String?, domain: String?, cookies: String) {
-//        url ?: return
-//        var spUrl: String by Preference(url, cookies)
-//        @Suppress("UNUSED_VALUE")
-//        spUrl = cookies
-//        domain ?: return
-//        var spDomain: String by Preference(domain, cookies)
-//        @Suppress("UNUSED_VALUE")
-//        spDomain = cookies
+//            url ?: return
+//            var spUrl: String by Preference(url, cookies)
+//            @Suppress("UNUSED_VALUE")
+//            spUrl = cookies
+//            domain ?: return
+//            var spDomain: String by Preference(domain, cookies)
+//            @Suppress("UNUSED_VALUE")
+//            spDomain = cookies
         }
 
         fun encodeCookie(cookies: List<String>): String {
@@ -131,7 +132,8 @@ class CommonUtils {
 
         fun isNetworkAvailable(context: Context): Boolean {
             val manager = context.applicationContext.getSystemService(
-                Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                Context.CONNECTIVITY_SERVICE
+            ) as ConnectivityManager
             val info = manager.activeNetworkInfo
             return !(null == info || !info.isAvailable)
         }

@@ -105,7 +105,6 @@ class IndexFragment :
     }
 
     private fun getData(isLoadMore: Boolean) {
-
         mViewModel.getMainBanner()
         getMainArticleList(isLoadMore)
     }

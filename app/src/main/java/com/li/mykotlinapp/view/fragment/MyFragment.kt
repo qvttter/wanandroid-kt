@@ -9,6 +9,7 @@ import com.li.mykotlinapp.R
 import com.li.mykotlinapp.base.BaseVMFragment
 import com.li.mykotlinapp.databinding.FragmentMyBinding
 import com.li.mykotlinapp.util.PrefUtil
+import com.li.mykotlinapp.view.activity.MyCollectArticleActivity
 import com.li.mykotlinapp.view.activity.TestDoubleScreenActivity
 import com.li.mykotlinapp.view.activity.TestKtActivity
 import com.li.mykotlinapp.view.dialog.LoginDialog
@@ -36,6 +37,9 @@ class MyFragment : BaseVMFragment<MyViewModel, FragmentMyBinding>(R.layout.fragm
         }
 
         isLogin()
+        binding.tvMyCollectArticle.setOnClickListener {
+            MyCollectArticleActivity.start(mContext)
+        }
 
         binding.tvMyCollectArticle.setOnLongClickListener {
             JavMainActivity.start(mContext)

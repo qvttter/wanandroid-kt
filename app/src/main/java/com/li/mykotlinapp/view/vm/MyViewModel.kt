@@ -72,7 +72,7 @@ class MyViewModel : BaseViewModel() {
         }
     }
     //收藏的文章
-    fun getCollect() {
+    fun getCollectArticleList() {
         launch {
             HttpBiz.getInstance().getMyCollectArticleList(0)
                 .onStart {
@@ -93,6 +93,5 @@ class MyViewModel : BaseViewModel() {
                     }
                 }
         }
-
     }
 }

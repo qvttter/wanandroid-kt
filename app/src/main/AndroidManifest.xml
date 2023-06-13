@@ -131,6 +131,7 @@
         <activity android:name=".test.TestXDCardFunctionActivity" />
         <activity android:name=".view.activity.TestRecyclerActivity" />
         <activity android:name=".test.TestScanLiteActivity" />
+        <activity android:name=".view.activity.MyCollectArticleActivity" />
 
 
         <!--        <service android:name=".service.MultiScreenService" />-->

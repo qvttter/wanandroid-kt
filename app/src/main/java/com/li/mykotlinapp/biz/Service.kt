@@ -27,6 +27,7 @@ interface Service {
     @GET("article/list/{page}/json")
     suspend fun getMainArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>
 
+    //收藏的文章
     @GET("lg/collect/list/{page}/json")
     suspend fun getMyCollectArticleList(@Path("page") page: Int): BasePageResponse<ArticleBean>
 
