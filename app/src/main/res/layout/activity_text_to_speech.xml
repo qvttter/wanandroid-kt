@@ -23,6 +23,12 @@
             android:text="繁体"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_play_mp3"
+            android:text="播放MP3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <TextView

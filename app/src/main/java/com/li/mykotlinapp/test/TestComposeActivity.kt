@@ -35,55 +35,55 @@ class TestComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         list = ArrayList()
         for (i in 1..100){
-            list.add("我是"+i)
+            list.add("这是"+i)
         }
-        setContent {
-            Conversation(list)
-        }
+//        setContent {
+//            Conversation(list)
+//        }
     }
 
-    @Composable
-    fun Conversation(texts: List<String>) {
-        LazyColumn {
-            items(texts) { string ->
-                ComposeText(string)
-            }
-        }
-    }
-
-    @Preview
-    @Composable
-    fun PreviewText() {
-        Conversation(list)
-    }
-
-    @Composable
-    fun ComposeText(text: String) {
-        Surface(
-            shape = MaterialTheme.shapes.medium, // 使用 MaterialTheme 自带的形状
-            elevation = 5.dp,
-            modifier = Modifier
-                .padding(all = 8.dp)
-                .fillMaxWidth()
-                .background(colorResource(id = R.color.colorDarkGray))//.fillMaxWidth()相当于match_parent
-        ){
-            Row(modifier = Modifier.padding(all = 8.dp),verticalAlignment = Alignment.CenterVertically) {
-                Column {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_baseline_account_circle_24),
-                        contentDescription = "app",
-                    )
-                }
-                Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                Column {
-                    Text(text = "标题",color = colorResource(id = R.color.colorPrimary),fontSize = 18.sp)
-                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
-                    Text(text)
-                }
-            }
-        }
-
-    }
+//    @Composable
+//    fun Conversation(texts: List<String>) {
+//        LazyColumn {
+//            items(texts) { string ->
+//                ComposeText(string)
+//            }
+//        }
+//    }
+//
+//    @Preview
+//    @Composable
+//    fun PreviewText() {
+//        Conversation(list)
+//    }
+//
+//    @Composable
+//    fun ComposeText(text: String) {
+//        Surface(
+//            shape = MaterialTheme.shapes.medium, // 使用 MaterialTheme 自带的形状
+//            elevation = 5.dp,
+//            modifier = Modifier
+//                .padding(all = 8.dp)
+//                .fillMaxWidth()
+//                .background(colorResource(id = R.color.colorDarkGray))//.fillMaxWidth()相当于match_parent
+//        ){
+//            Row(modifier = Modifier.padding(all = 8.dp),verticalAlignment = Alignment.CenterVertically) {
+//                Column {
+//                    Image(
+//                        painter = painterResource(id = R.drawable.ic_baseline_account_circle_24),
+//                        contentDescription = "app",
+//                    )
+//                }
+//                Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+//                Column {
+//                    Text(text = "标题",color = colorResource(id = R.color.colorPrimary),fontSize = 18.sp)
+//                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
+//                    Text(text)
+//                }
+//            }
+//        }
+//
+//    }
 
     companion object {
         fun start(content: Context) {

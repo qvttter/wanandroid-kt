@@ -45,6 +45,7 @@ class IndexFragment :
     lateinit var adapter: IndexArticleAdapter
     private lateinit var bannerView: View
     private lateinit var banner: XBanner
+    private var isLoadMore: Boolean = false
 
     private var page = 0
 
@@ -99,23 +100,10 @@ class IndexFragment :
                 shortToast(it)
             }
         }
-        initEvent()
-
-        getData(false)
-    }
-
-    private fun getData(isLoadMore: Boolean) {
-        mViewModel.getMainBanner()
-        getMainArticleList(isLoadMore)
-    }
-
-    private fun getMainArticleList(isLoadMore: Boolean) {
         lifecycleScope.launch {
-            HttpBiz.getInstance().getMainArticleList(page)
-                .onStart {
-                }
-                .catch {
-                    LogUtils.e(it.message)
+            mViewModel.articleListErrorValue.collect {
+                LogUtils.e("mViewModel.articleListErrorValue.collect:$it")
+                if (it){
                     if (isLoadMore) {
                         page--
                         adapter.loadMoreModule.loadMoreFail()
@@ -123,33 +111,82 @@ class IndexFragment :
                         binding.indexSwipeFresh.isRefreshing = false
                     }
                 }
-                .onCompletion {
-                }
-                .collect { result ->
-                    result.doFailure { throwable ->
-                        shortToast("获取MainArticleList出错")
-                    }
-                    result.doSuccess { value ->
-                        LogUtils.e("获取MainArticleList成功:"+value.datas.size)
-                        if (isLoadMore) {
-                            if (adapter.itemCount >= value.total) {
-                                //数据全部加载完毕.false:显示“没有更多了”
-                                adapter.loadMoreModule.loadMoreEnd()
-                            } else {
-                                //成功获取更多数据
-                                articleList.addAll(value.datas)
-                                adapter.addData(value.datas)
-                                adapter.loadMoreModule.loadMoreComplete()
-                            }
-                        } else {
-                            articleList.clear()
-                            articleList.addAll(value.datas)
-                            adapter.setList(articleList)
-                            binding.indexSwipeFresh.isRefreshing = false
-                        }
-                    }
-                }
+            }
         }
+        lifecycleScope.launch {
+            mViewModel.articleListValue.collect {
+                if (isLoadMore) {
+                    if (adapter.itemCount >= it.total) {
+                        //数据全部加载完毕.false:显示“没有更多了”
+                        adapter.loadMoreModule.loadMoreEnd()
+                    } else {
+                        //成功获取更多数据
+                        articleList.addAll(it.datas)
+                        adapter.addData(it.datas)
+                        adapter.loadMoreModule.loadMoreComplete()
+                    }
+                } else {
+                    articleList.clear()
+                    articleList.addAll(it.datas)
+                    adapter.setList(articleList)
+                    binding.indexSwipeFresh.isRefreshing = false
+                }
+            }
+        }
+
+        initEvent()
+
+        isLoadMore = false
+        getData()
+    }
+
+    private fun getData() {
+        mViewModel.getMainBanner()
+        mViewModel.getMainArticleList(page)
+//        getMainArticleList()
+    }
+
+    private fun getMainArticleList() {
+//        lifecycleScope.launch {
+//            HttpBiz.getInstance().getMainArticleList(page)
+//                .onStart {
+//                }
+//                .catch {
+//                    LogUtils.e(it.message)
+//                    if (isLoadMore) {
+//                        page--
+//                        adapter.loadMoreModule.loadMoreFail()
+//                    } else {
+//                        binding.indexSwipeFresh.isRefreshing = false
+//                    }
+//                }
+//                .onCompletion {
+//                }
+//                .collect { result ->
+//                    result.doFailure { throwable ->
+//                        shortToast("获取MainArticleList出错")
+//                    }
+//                    result.doSuccess { value ->
+//                        LogUtils.e("获取MainArticleList成功:"+value.datas.size)
+//                        if (isLoadMore) {
+//                            if (adapter.itemCount >= value.total) {
+//                                //数据全部加载完毕.false:显示“没有更多了”
+//                                adapter.loadMoreModule.loadMoreEnd()
+//                            } else {
+//                                //成功获取更多数据
+//                                articleList.addAll(value.datas)
+//                                adapter.addData(value.datas)
+//                                adapter.loadMoreModule.loadMoreComplete()
+//                            }
+//                        } else {
+//                            articleList.clear()
+//                            articleList.addAll(value.datas)
+//                            adapter.setList(articleList)
+//                            binding.indexSwipeFresh.isRefreshing = false
+//                        }
+//                    }
+//                }
+//        }
     }
 
     private fun initEvent() {
@@ -161,12 +198,15 @@ class IndexFragment :
         binding.indexSwipeFresh.setOnRefreshListener {
             page = 0
             adapter.loadMoreModule.isEnableLoadMore = false
-            getData(false)
+            isLoadMore = false
+            getData()
         }
 
         adapter.loadMoreModule.setOnLoadMoreListener {
             page++
-            getMainArticleList(true)
+            isLoadMore = true
+            mViewModel.getMainArticleList(page)
+//            getMainArticleList()
         }
 
         adapter.setOnItemClickListener { adapter, view, position ->

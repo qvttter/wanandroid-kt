@@ -2,6 +2,7 @@ package com.li.mykotlinapp.test
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.speech.tts.TextToSpeech
 import com.apkfuns.logutils.LogUtils
 import com.li.mykotlinapp.R
@@ -66,6 +67,17 @@ class TextToSpeechActivity : BaseActivity() {
         btn_play.setOnClickListener {
             var s = et_text.text.toString()
             tts.speak(s, TextToSpeech.QUEUE_FLUSH, null)
+        }
+        btn_play_mp3.setOnClickListener {
+            val mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource("http://downsc.chinaz.net/Files/DownLoad/sound1/201906/11582.mp3") // 设置音频文件的 URL
+            mediaPlayer.prepare() // 准备播放
+            mediaPlayer.start() // 开始播放
+            mediaPlayer.setOnCompletionListener(object : MediaPlayer.OnCompletionListener {
+                override fun onCompletion(p0: MediaPlayer?) {
+                    mediaPlayer.release(); // 释放 MediaPlayer 对象所占用的资源
+                }
+            })
         }
 
     }

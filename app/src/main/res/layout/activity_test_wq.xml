@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除" />
+
+        <Button
+            android:id="@+id/btn_undo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="撤销" />
+
+        <RadioGroup
+            android:id="@+id/rg_cross_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_rect_mode"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="10dp"
+                android:background="@drawable/radio_btn_selector"
+                android:gravity="center"
+                android:text="矩形"/>
+            <RadioButton
+                android:id="@+id/rb_cross_mode"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:background="@drawable/radio_btn_selector"
+                android:gravity="center"
+                android:text="交错排列"/>
+        </RadioGroup>
+        <androidx.legacy.widget.Space
+            android:layout_width="24dp"
+            android:layout_height="match_parent"/>
+
+        <RadioGroup
+            android:id="@+id/rg_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_free_fill"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="10dp"
+                android:background="@drawable/radio_btn_selector"
+                android:gravity="center"
+                android:text="自由填充"/>
+            <RadioButton
+                android:id="@+id/rb_rect_fill"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:background="@drawable/radio_btn_selector"
+                android:gravity="center"
+                android:text="矩形填充"/>
+            <RadioButton
+                android:id="@+id/rb_eraser"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:background="@drawable/radio_btn_selector"
+                android:gravity="center"
+                android:text="橡皮擦"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.li.mykotlinapp.test.CircleDrawView
+        android:id="@+id/view_circle_draw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

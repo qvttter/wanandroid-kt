@@ -37,7 +37,7 @@ data class ArticleBean(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+    val tags: List<TagBean>,
     val title: String,
     val type: Int,
     val userId: Int,

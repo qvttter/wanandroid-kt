@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.view.KeyEvent
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
@@ -48,6 +50,17 @@ class CommonWebViewActivity : BaseActivity() {
             super.onReceivedTitle(view, title)
             setToolBarTitle(title)
         }
+    }
+
+    private val mWebViewClient = object :WebViewClient(){
+        override fun shouldOverrideUrlLoading(
+            view: WebView?,
+            request: WebResourceRequest?
+        ): Boolean {
+            return super.shouldOverrideUrlLoading(view, request)
+        }
+
+
     }
 
     override fun onPause() {

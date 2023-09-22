@@ -20,6 +20,7 @@ import com.li.mykotlinapp.databinding.ActivityMyCollectArticleBinding
 import com.li.mykotlinapp.databinding.ActivityObjectBoxBinding
 import com.li.mykotlinapp.view.vm.MyViewModel
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -98,11 +99,11 @@ class MyCollectArticleActivity : BaseVMActivity<MyViewModel, ActivityMyCollectAr
                 }
                 .onCompletion {
                 }
-                .collect { result ->
-                    result.doFailure { throwable ->
+                .collect {
+                    it.doFailure { throwable ->
                         shortToast("获取MainArticleList出错")
                     }
-                    result.doSuccess { value ->
+                    it.doSuccess { value ->
                         LogUtils.e("获取MainArticleList成功:"+value.datas.size)
                         if (isLoadMore) {
                             if (adapter.itemCount >= value.total) {

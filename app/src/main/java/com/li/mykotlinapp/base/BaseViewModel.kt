@@ -50,6 +50,14 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
         }
     }
 
+    fun launchIO(block: suspend CoroutineScope.() -> Unit) {
+        launch {
+            withContext(Dispatchers.IO) {
+                block()
+            }
+        }
+    }
+
     fun launchOnUITryCatch(
         tryBlock: suspend CoroutineScope.() -> Unit,
         catchBlock: suspend CoroutineScope.(Throwable) -> Unit,

@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
 import android.view.animation.AnimationUtils
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.apkfuns.logutils.LogUtils
@@ -25,7 +26,9 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
@@ -55,18 +58,6 @@ class TestKtActivity : BaseActivity() {
     }
 
     override fun initData() {
-//        flow {
-//            for (i in 60 downTo 0) {
-//                emit(i)
-//                delay(1000)
-//            }
-//        }
-//            .flowOn(Dispatchers.Default)
-//            .onCompletion { tv_text.append("倒计时结束\n") }
-//            .onEach{tv_text.append( "倒计时:${it}s\n")}
-//            .flowOn(Dispatchers.Main)
-//            .launchIn(lifecycleScope)
-
         when (a) {
             null -> {
                 LogUtils.e("a is null ")
@@ -81,20 +72,19 @@ class TestKtActivity : BaseActivity() {
         }
 
         list = ArrayList()
-        list.add("abc")
-        list.add("efg")
-        list.add("123")
-        list.add("vvv")
-        list.add("qqq")
-
-        list.filter { it.startsWith("a") }
-            .sortedBy { it }
-
-
+//        list.add("abc")
+//        list.add("efg")
+//        list.add("123")
+//        list.add("vvv")
+//        list.add("qqq")
+//
+//        list.filter { it.startsWith("a") }
+//            .sortedBy { it }
 
 
 
         btnList = ArrayList()
+        btnList.add("TestWQActivity")
         btnList.add("ABTQR")
         btnList.add("objectBox")
         btnList.add("excel")
@@ -117,6 +107,8 @@ class TestKtActivity : BaseActivity() {
         btnList.add("TestRxjava")
         btnList.add("TestRecyclerActivity")
         btnList.add("TestScanLiteActivity")
+        btnList.add("countdown")
+
 
         var list = Gson().toJson(btnList)
         LogUtils.e("list:$list")
@@ -286,10 +278,39 @@ class TestKtActivity : BaseActivity() {
                 }
                 "TestScanLiteActivity" -> {
                     TestScanLiteActivity.start(mContext)
-
+                }
+                "countdown" ->{
+                    countdown()
+                }
+                "TestWQActivity" ->{
+                    TestWQActivity.start(mContext)
                 }
             }
         }
+    }
+
+    //用flow创建倒计时
+    private fun countdown(){
+        flow {
+//            for (i in 60 downTo 0) {
+//                emit(i)
+//                delay(1000)
+//            }
+            (60 downTo 0).forEach{
+                delay(1000)
+                emit(it)
+            }
+        }
+            .flowOn(Dispatchers.Default)
+            .onCompletion { tv_text.append("倒计时结束\n") }
+            .onEach { tv_text.append("倒计时:${it}s\n") }
+            .flowOn(Dispatchers.Main)
+            .launchIn(lifecycleScope)
+
+    }
+
+    private fun rxCountdown(){
+        //.compose(this.bindUntilEvent(ActivityEvent.PAUSE))   rxjava3//手动设置在activity onPause的时候取消订阅
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

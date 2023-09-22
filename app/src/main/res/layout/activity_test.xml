@@ -6,11 +6,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.li.mykotlinapp.widget.bubble.BubbleView
-        android:layout_marginTop="24dp"
-        android:layout_width="400px"
-        android:layout_height="100px"/>
-
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
@@ -32,31 +27,14 @@
         android:padding="8dp"
         android:id="@+id/rcv_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tv_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1234"
-            android:textSize="64sp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_1"
-            android:text="5678"
-            android:textSize="18sp" />
-
-
-
-
-    </RelativeLayout>
-
+    <Button
+        android:id="@+id/btn_countdown"
+        android:text="倒计时"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_btn_primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
